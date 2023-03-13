@@ -1,0 +1,108 @@
+$white:#FFFDF3;
+$black:#0F0F0D;
+$blue1:#114286;
+$blue2:#4882D1;
+$blue3:#00C2FF;
+$orange:#FBC972;
+
+.c-white{color: $white !important;}
+.c-black{color: $black !important;}
+.c-blue1{color: $blue1 !important;}
+.c-blue2{color: $blue2 !important;}
+.c-blue3{color: $blue3 !important;}
+.c-orange{color: $orange !important;}
+
+.bg-white{background-color: $white !important;}
+.bg-black{background-color: $black !important;}
+.bg-blue1{background-color: $blue1 !important;}
+.bg-blue2{background-color: $blue2 !important;}
+.bg-blue3{background-color: $blue3 !important;}
+.bg-orange{background-color: $orange !important;}
+
+.bo-white{border-color: $white !important;}
+.bo-black{border-color: $black !important;}
+.bo-blue1{border-color: $blue1 !important;}
+.bo-blue2{border-color: $blue2 !important;}
+.bo-blue3{border-color: $blue3 !important;}
+.bo-orange{border-color: $orange !important;}
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+*:not(i){
+  font-family: 'Playfair Display', serif;
+}
+.font2{
+  font-family: 'Open Sans', sans-serif !important;
+}
+.font1{
+  font-family: 'Playfair Display', serif !important;
+}
+
+.header-sec{
+  padding: 10px 0;
+  position: relative;
+  width: fit-content;
+  margin: 18px 0 !important;
+  &::after{
+    content: "";
+    width: 75%;
+    height: 3px;
+    background-color: $blue3;
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+  }
+  &.text-center::after{
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+}
+.line-overflow-5 {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.line-overflow-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.line-overflow-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.line-overflow-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.line-overflow-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.row{
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.animated {
+  animation-duration: 0.5s !important;
+  animation-delay: 0s;
+}
