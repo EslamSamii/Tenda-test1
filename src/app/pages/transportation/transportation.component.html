@@ -1,0 +1,198 @@
+<section class="container-lg d-flex flex-column" style="margin-top: 100px;">
+
+    <div class="d-flex justify-content-between align-items-center">
+
+      <div class="d-flex justify-content-center flex-column">
+        <h2 style="font-size: 40px;">{{adventureData?.title}}</h2>
+        <div class="d-flex c-blue1 font2 mt-2" style="font-weight: 700 ;font-size: 28px;">
+          <img src="{{categ?.icon}}" class="mx-2" style="object-fit: cover;width: 13px">
+          {{categ?.title}}
+        </div>
+      </div>
+      <button mat-raised-button matTooltip="Copy Link" [cdkCopyToClipboard]="'window.location'" class="btn rounded-pill rounded px-5 py-3 " style="background-color: #F2F2F2;height: 50px;">
+        <div class=" d-flex c-blue1 font2 fw-bold align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="c-blue1 mx-2 bi bi-share-fill" viewBox="0 0 16 16">
+            <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+          </svg>
+          Share
+        </div>
+      </button>
+
+    </div>
+
+
+
+    <div class="row rounded-4 overflow-hidden mt-5 gap-3 gap-lg-0">
+      <div class="col-12 col-lg-6 ps-0 pe-1" style="max-height: 380px;height: 380px;">
+          <img src="{{adventureData?.image ? domain+adventureData.images[0].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+      </div>
+      <div class="col-12 col-lg-6 row p-0 m-0 " style="max-height: 380px;height: 380px;">
+          <div class="col-6 p-1 pt-0 overflow-auto" style="max-height: 192px;height: 192px;">
+            <img src="{{adventureData?.images[0] ? domain+adventureData.images[1].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+          </div>
+          <div class="col-6 p-1 pt-0 pe-0 overflow-auto" style="max-height: 192px;height: 192px;">
+            <img src="{{adventureData?.images[1] ? domain+adventureData.images[2].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+          </div>
+          <div class="col-6 p-1 overflow-auto" style="max-height: 192px;height: 192px;">
+            <img src="{{adventureData?.images[2] ? domain+adventureData.images[3].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+          </div>
+          <div class="overflow-hidden position-relative col-6 p-1 pe-0 overflow-auto" style="max-height: 192px;height: 192px;">
+            <div class="h-100" *ngIf="adventureData.images.length<4">
+              <img src="{{adventureData?.images[3] ? domain+adventureData.images[4].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+            </div>
+            <div *ngIf="adventureData.images.length>4"  class="overlay-seemore h-100" data-bs-toggle="modal" data-bs-target="#seeMorePhotos">
+              <img src="{{adventureData?.images[3] ? domain+adventureData.images[4].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+    <div class="my-5 d-flex justify-content-between">
+      <div class="d-flex gap-5 align-items-center">
+        <div class="d-flex gap-2 align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="c-blue2 bi bi-credit-card-fill" viewBox="0 0 16 16">
+            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V4zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7H0zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z"/>
+          </svg>
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <span class="font2" style="color: #767E86; font-size: 16px;font-weight: 400;">Price</span>
+            <span class="c-blue2 font2" style="font-size: 21px;font-weight: 700;">EGY</span>
+          </div>
+          <span class="c-blue2 font2" style="font-size: 45px;font-weight: 700;line-height: 58px;">{{adventureData?.price | number: '1.0-0'}}</span>
+        </div>
+        <div class="m-0 c-blue2 font2 gap-2 d-flex align-items-center" style="font-size: 20px">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="c-blue2 bi bi-calendar2-week-fill" viewBox="0 0 16 16">
+            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zm9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5zM8.5 7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM3 10.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/>
+          </svg>
+          {{adventureData?.date}}</div>
+      </div>
+
+    </div>
+
+    <p class="font2" style="line-height: 38.13px;font-size: 28px;">{{adventureData?.description}}</p>
+    <div *ngIf="!isSuccess" class="my-5">
+      <h2 class="font1" style="font-size: 40px;font-weight: 700;">Fill in the details below to book your transfer</h2>
+      <form [formGroup]="es_form">
+        <div class="row">
+
+          <div class="col-12 col-lg-4  p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput3" style="font-size: 20px;" class="form-label font2">First Name</label>
+            <input formControlName="fname" type="text" class="form-control font2" id="FormControlInput3" style="padding: 15px 20px; font-size: 18px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="Enter your first name">
+          </div>
+          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput4" style="font-size: 20px;" class="form-label font2">Last Name</label>
+            <input formControlName="lname" type="text" class="form-control font2" id="FormControlInput4" style="padding: 15px 20px; font-size: 18px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="Enter your last name">
+          </div>
+          <div class="d-none d-lg-block col-4"></div>
+          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput1" style="font-size: 20px;" class="form-label font2">Email</label>
+            <input formControlName="email" type="email" class="form-control font2" id="FormControlInput1" style="padding: 15px 20px; font-size: 18px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="name@example.com">
+          </div>
+          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput2" style="font-size: 20px;" class="form-label font2">Telephone</label>
+            <input formControlName="phone" type="text" class="form-control font2" id="FormControlInput2" style="padding: 15px 20px; font-size: 18px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="Enter your telephone">
+          </div>
+          <div class="d-none d-lg-block col-4"></div>
+
+          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput7" style="font-size: 20px;" class="form-label font2">Which airport do you arrive at?</label>
+            <input (change)="calcPrice()" matInput formControlName="fromPlace" [matAutocomplete]="auto" type="text" class="form-control font2" id="FormControlInput7" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="From">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <ng-container *ngFor="let option of filteredOptions | async">
+                <mat-option *ngIf="option.title !=toPlace.value" [value]="option.title">
+                  {{option.title}}
+                </mat-option>
+              </ng-container>
+
+
+            </mat-autocomplete>
+          </div>
+
+          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput4" style="font-size: 20px;" class="form-label font2">Where would you like to be dropped off?</label>
+            <input (change)="calcPrice()" matInput formControlName="toPlace" [matAutocomplete]="auto2" type="text" class="form-control font2" id="FormControlInput4" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="To">
+            <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayFn">
+              <ng-container *ngFor="let option of filteredtoPlace | async">
+                <mat-option *ngIf="option.title !=fromPlace.value" [value]="option.title">
+                  {{option.title}}
+                </mat-option>
+              </ng-container>
+            </mat-autocomplete>
+          </div>
+
+          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1 form-check form-switch justify-content-center">
+              <label for="flexSwitchCheckDefault" style="font-size: 20px;" class="form-label font2 form-check-label">Return</label>
+              <input type="checkbox" (change)="onChange($event)"  class="form-check-input m-0" id="FormControlInput4" style="padding: 18px 32px;background-color: #FFFDF3 !important;border-color: #FBC972;">
+          </div>
+
+          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput1" style="font-size: 20px;" class="form-label font2">When does your flight arrive?</label>
+            <input (change)="calcPrice()" formControlName="dateFrom" type="datetime-local" class="form-control font2" id="FormControlInput1" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" >
+          </div>
+
+          <div *ngIf="isReturn" class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput3" style="font-size: 20px;" class="form-label font2">When does your flight depart?</label>
+            <input [(ngModel)]="dateTo" [ngModelOptions]="{standalone: true}" type="datetime-local" class="form-control font2" id="FormControlInput3" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" >
+          </div>
+
+          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput4" style="font-size: 20px;" class="form-label font2">Number of Persons</label>
+            <input (change)="calcPrice()" formControlName="persons" type="number" min="1" max="50" class="form-control font2" id="FormControlInput4" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="0">
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+          <span style="font-size: 20px;" class="font2 me-4">Transportation cost is</span>
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <span class="c-blue2 font2" style="font-size: 21px;font-weight: 700;">EGY</span>
+          </div>
+          <span class="c-blue2 font2" style="font-size: 40px;font-weight: 700;line-height: 58px;">{{totalPrice ? totalPrice : adventureData?.price}}</span>
+        </div>
+
+        <div class="col-12 p-3 d-flex flex-column gap-1 my-3">
+
+          <button type="button" (click)="bookBtn()" [disabled]="es_form.invalid || isLoading || (!dateTo && isReturn)" style="height: 54px;" mat-raised-button class="w-100 font2 bg-blue3 px-5 py-3 rounded rounded-3 btn text-white">
+            <div style="font-size: 20px;font-weight: 700;" class="d-flex align-items-center font2">
+              <div *ngIf="isLoading" class="spinner-border text-light mx-1" style="width: 21px;height: 21px;font-size: 10px;" role="status"></div>
+              Complete Request
+            </div>
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+
+    <div *ngIf="isSuccess" class="p-2 my-2 d-flex flex-column justify-content-center align-items-center">
+      <svg style="color: #fff;padding: 5px;" xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor" class="bi bi-check-lg bg-success rounded-circle " viewBox="0 0 16 16">
+        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+      </svg>
+      <h2 class="font1 my-5" style="font-weight: 700; font-size: 52px;">Congratulations!</h2>
+      <p class="font2" style="color: #828282;font-size: 16px;">Your request has been registered successfully</p>
+      <button [routerLink]="['/explore']" type="button" style="height: 54px;" mat-raised-button class="w-100 my-5 bg-blue3 px-5 py-3 rounded rounded-3 btn text-white">
+        <span class="font2" style="font-size: 18px;font-weight: 700;">Explore more adventures</span>
+      </button>
+    </div>
+</section>
+<!-- start modals -->
+
+<div class="modal fade" id="seeMorePhotos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Photos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row p-3">
+
+          <div class="col-lg-4 col-12 p-1">
+            <img src="assets/images/image2.jpg" class="rounded rounded-2" style="object-fit: cover;min-height: 300px;max-height: 300px; width: 100%; height: 100%;">
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modals -->
