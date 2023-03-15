@@ -5,7 +5,10 @@
     </button>
     <ng-container *ngFor="let item of categories">
       <button [routerLink]="['../explore']" [queryParams]="{'filter':item.id}" routerLinkActive="bg-blue2" class="btn  py-2 px-3 font2 rounded rounded-pill" style="font-size: 16px;font-weight: 700;">
-        {{item.title | uppercase}}
+        <div class="d-flex align-items-center font2 justify-content-center">
+          <mat-icon class="mx-1" style="width: 22px !important;height: 22px !important;font-size: 22px;">{{item?.icon}}</mat-icon>
+          {{item.title | uppercase}}
+        </div>
       </button>
     </ng-container>
 
@@ -16,8 +19,11 @@
       ALL
     </button>
     <ng-container *ngFor="let item of categories">
-      <button [routerLink]="['../explore']" [queryParams]="{'filter':item.id}" routerLinkActive="bg-blue2" class="btn  py-2 px-3 font2 rounded rounded-pill" style="font-size: 16px;font-weight: 700;">
-        {{item.title | uppercase}}
+      <button [routerLink]="['../explore']" [queryParams]="{'filter':item.id}" routerLinkActive="bg-blue2" class="btn  py-2 px-3  rounded rounded-pill" style="font-size: 16px;font-weight: 700;">
+        <div class="d-flex align-items-center font2 justify-content-center">
+          <mat-icon class="mx-1" style="width: 22px !important;height: 22px !important;font-size: 22px;">{{item?.icon}}</mat-icon>
+          {{item.title | uppercase}}
+        </div>
       </button>
     </ng-container>
 
