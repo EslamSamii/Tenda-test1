@@ -68,11 +68,11 @@
 
     <p class="font2 my-5" style="line-height: 38.13px;font-size: 28px;">{{adventureData?.description}}</p>
     <div *ngIf="!isSuccess" class="my-5">
-      <h2 class="font1" style="font-size: 40px;font-weight: 700;">Fill in the details below to book your transfer</h2>
+      <h2 class="font1" style="font-size: 40px;font-weight: 700;line-height: 40px;">Fill in the details below to book your transfer</h2>
       <form [formGroup]="es_form">
         <div class="row">
 
-          <div class="col-12 col-lg-4  p-3 my-3 d-flex flex-column gap-1">
+          <div class="col-12 col-lg-5  p-3 my-3 d-flex flex-column gap-1">
             <label for="FormControlInput3" style="font-size: 20px;" class="form-label font2">First Name</label>
             <input formControlName="fname" type="text" class="form-control font2" id="FormControlInput3" style="padding: 15px 20px; font-size: 18px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="Enter your first name">
                        <!-- start errors -->
@@ -86,7 +86,7 @@
                       </span>
                       <!-- end errors -->
           </div>
-          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+          <div class="col-12 col-lg-5 p-3 my-3 d-flex flex-column gap-1">
             <label for="FormControlInput4" style="font-size: 20px;" class="form-label font2">Last Name</label>
             <input formControlName="lname" type="text" class="form-control font2" id="FormControlInput4" style="padding: 15px 20px; font-size: 18px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="Enter your last name">
                       <!-- start errors -->
@@ -100,8 +100,7 @@
                       </span>
                       <!-- end errors -->
           </div>
-          <div class="d-none d-lg-block col-4"></div>
-          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+          <div class="col-12 col-lg-5 p-3 my-3 d-flex flex-column gap-1">
             <label for="FormControlInput1" style="font-size: 20px;" class="form-label font2">Email</label>
             <input formControlName="email" type="email" class="form-control font2" id="FormControlInput1" style="padding: 15px 20px; font-size: 18px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="name@example.com">
                       <!-- start errors -->
@@ -116,7 +115,7 @@
                       </span>
                       <!-- end errors -->
           </div>
-          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+          <div class="col-12 col-lg-5 p-3 my-3 d-flex flex-column gap-1">
             <label for="FormControlInput2" style="font-size: 20px;" class="form-label font2">Telephone</label>
             <ngx-intl-tel-input  class="w-100" [cssClass]="(emptyNum || !phoneValid) && phoneTouched? 'border-danger form-control font2 default-input':'form-control font2 default-input'" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"
                 [preferredCountries]="[CountryISO.UnitedStates]"
@@ -142,9 +141,8 @@
             </span>
             <!-- end errors -->
           </div>
-          <div class="d-none d-lg-block col-4"></div>
 
-          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+          <div class="col-12 col-lg-5 p-3 my-3 d-flex flex-column gap-1">
             <label for="FormControlInput7" style="font-size: 20px;" class="form-label font2">Which airport do you arrive at?</label>
             <input (change)="calcPrice()" matInput formControlName="fromPlace" [matAutocomplete]="auto" type="text" class="form-control font2" id="FormControlInput7" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="From">
             <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
@@ -168,7 +166,7 @@
                 <!-- end errors -->
           </div>
 
-          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+          <div class="col-12 col-lg-5 p-3 my-3 d-flex flex-column gap-1">
             <label for="FormControlInput4" style="font-size: 20px;" class="form-label font2">Where would you like to be dropped off?</label>
             <input (change)="calcPrice()" matInput formControlName="toPlace" [matAutocomplete]="auto2" type="text" class="form-control font2" id="FormControlInput4" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="To">
             <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayFn">
@@ -190,12 +188,12 @@
             <!-- end errors -->
           </div>
 
-          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1 form-check form-switch justify-content-center">
+          <div class="col-12 col-lg-2 p-3 my-3 d-flex flex-column gap-1 form-check form-switch justify-content-center">
               <label for="flexSwitchCheckDefault" style="font-size: 20px;" class="form-label font2 form-check-label">Return</label>
               <input type="checkbox" (change)="onChange($event)"  class="form-check-input m-0" id="FormControlInput4" style="padding: 18px 32px;background-color: #FFFDF3 !important;border-color: #FBC972;">
           </div>
 
-          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+          <div class="col-12 col-lg-5 p-3 my-3 d-flex flex-column gap-1">
             <label for="FormControlInput1" style="font-size: 20px;" class="form-label font2">When does your flight arrive?</label>
             <input (change)="calcPrice()" formControlName="dateFrom" type="datetime-local" class="form-control font2" id="FormControlInput1" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" >
                 <!-- start errors -->
@@ -210,12 +208,12 @@
                 <!-- end errors -->
           </div>
 
-          <div *ngIf="isReturn" class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+          <div *ngIf="isReturn" class="col-12 col-lg-5 p-3 my-3 d-flex flex-column gap-1">
             <label for="FormControlInput3" style="font-size: 20px;" class="form-label font2">When does your flight depart?</label>
             <input [(ngModel)]="dateTo" [ngModelOptions]="{standalone: true}" type="datetime-local" class="form-control font2" id="FormControlInput3" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" >
           </div>
 
-          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+          <div class="col-12 col-lg-5 p-3 my-3 d-flex flex-column gap-1">
             <label for="FormControlInput4" style="font-size: 20px;" class="form-label font2">Number of Persons</label>
             <input (change)="calcPrice()" formControlName="persons" type="number" min="1" max="50" class="form-control font2" id="FormControlInput4" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="0">
             <!-- start errors -->
