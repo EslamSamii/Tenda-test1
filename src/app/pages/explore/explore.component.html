@@ -41,8 +41,8 @@
               <h3 class="m-0 font1" style="font-weight: 600; font-size: 28px;">{{item?.title}}</h3>
             <div class="d-flex justify-content-between align-items-center my-3">
               <div class="d-flex c-blue1 font2 align-items-center" style="font-size: 20px;font-weight: 700;">
-                <img class="me-1" style="object-fit: cover;width: 13px" src="{{getCateg(item.category_id)?.icon}}" alt="">
                 <!-- <img class="me-1" style="object-fit: cover;width: 13px" src="assets/images/categ1.svg" alt=""> -->
+                <mat-icon style="width: 26px;height: 26px;font-size: 26px;" class="c-blue1 mx-2">{{getCateg(item.category_id).icon}}</mat-icon>
 
                 {{getCateg(item.category_id)?.title}}
               </div>
