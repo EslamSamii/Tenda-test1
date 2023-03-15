@@ -30,7 +30,6 @@ export class ExploreComponent {
 
 
        if(params.filter && params.filter!=''){
-        console.log(params.filter)
         this.adventures(params.filter);
         this.isAll = false;
 
@@ -57,7 +56,10 @@ export class ExploreComponent {
     })
   }
   getCateg(id:any){
-    let name = this.categories.filter((f:any) => f.id == id);
-    return name[0]
+    if(this.categories){
+      let name = this.categories.filter((f:any) => f.id == id);
+      return name[0]
+    }
+
   }
 }

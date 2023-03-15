@@ -36,10 +36,6 @@ export class HomeComponent {
 
   }
   ScrollLeft(element:any){
-    console.log(element.scrollLeft);
-    // element.scrollTo(0, 0)
-    // element.scrollLeft = element.scrollLeft -270
-    // console.log(element.scrollLeft);
     let Left:any = element.scrollLeft -450
 
     element.scrollTo({
@@ -48,9 +44,6 @@ export class HomeComponent {
     });
   }
   ScrollRight(element:any){
-    // console.log(element.scrollLeft);
-    // element.scrollLeft = element.scrollLeft +270
-    // console.log(element.scrollLeft);
     let Left:any = element.scrollLeft +450
 
     element.scrollTo({
@@ -138,9 +131,7 @@ export class HomeComponent {
         this.z_order[data.id] = length;
         length -- ;
       })
-      console.log(this.sliders)
       this.selectedSlider = this.sliders[0].id;
-      console.log(this.selectedSlider)
 
     })
   }

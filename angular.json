@@ -35,6 +35,7 @@
               "./node_modules/animate.css/animate.css",
               "./node_modules/wow.js/css/libs/animate.css",
               "./node_modules/hover.css/css/hover-min.css",
+              "./node_modules/intl-tel-input/build/css/intlTelInput.css",
               "src/styles.scss"
             ],
             "scripts": [
@@ -53,6 +54,7 @@
               "budgets": [
                 {
                   "type": "initial",
+
                   "maximumWarning": "1mb",
                   "maximumError": "4mb"
                 },

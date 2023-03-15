@@ -24,6 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from '@angular/material/button';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input-gg';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import {MatButtonModule} from '@angular/material/button';
     ClipboardModule,
     MatTooltipModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    NgxIntlTelInputModule,
+    MatMenuModule
 
   ],
   providers: [ApiService],

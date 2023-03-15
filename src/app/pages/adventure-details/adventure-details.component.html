@@ -8,14 +8,31 @@
         {{categ?.title}}
       </div>
     </div>
-    <button mat-raised-button matTooltip="Copy Link" [cdkCopyToClipboard]="getUrl()" class="btn rounded-pill rounded px-5 py-3 " style="background-color: #F2F2F2;height: 50px;">
-      <div class=" d-flex c-blue1 font2 fw-bold align-items-center">
+    <button mat-button [matMenuTriggerFor]="menu" mat-raised-button class="btn rounded-pill rounded px-4" style="background-color: #F2F2F2;height: 40px;">
+      <div class=" d-flex c-blue1 font2 fw-bold align-items-center" style="font-size: 14px;">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="c-blue1 mx-2 bi bi-share-fill" viewBox="0 0 16 16">
           <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
         </svg>
         Share
       </div>
     </button>
+    <mat-menu #menu="matMenu">
+      <div class="d-flex flex-nowrap gap-3 px-3 py-1 justify-content-center align-items-center">
+        <a matTooltip="Share on Facebook" href="https://www.facebook.com/sharer.php?u={{URL}}" target="_blank" class="text-decoration-none text-black">
+          <svg style="cursor: pointer;color: #3149c3;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+          </svg>
+        </a>
+        <a matTooltip="Share on Twitter" href="https://twitter.com/intent/tweet?text={{URL}}" target="_blank" class="text-decoration-none text-black">
+          <svg style="cursor: pointer;color: #6ea8ff;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+            <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+          </svg>
+        </a>
+        <div [cdkCopyToClipboard]="URL" matTooltip="Copy Link" class="text-decoration-none text-black " style="cursor: pointer;">
+          <mat-icon  style="width: 28px;height: 23px;font-size: 28px;">link</mat-icon>
+        </div>
+      </div>
+    </mat-menu>
 
   </div>
 
@@ -23,7 +40,7 @@
 
   <div class="row rounded-4 overflow-hidden mt-5 gap-3 gap-lg-0">
     <div class="col-12 col-lg-6 ps-0 pe-1" style="max-height: 380px;height: 380px;">
-        <img src="{{adventureData?.image ? domain+adventureData.images[0].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+        <img src="{{adventureData?.image ? adventureData?.image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
     </div>
     <div class="col-12 col-lg-6 row p-0 m-0 " style="max-height: 380px;height: 380px;">
         <div class="col-6 p-1 pt-0 overflow-auto" style="max-height: 192px;height: 192px;">
@@ -36,10 +53,10 @@
           <img src="{{adventureData?.images[2] ? domain+adventureData.images[2].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
         </div>
         <div class="overflow-hidden position-relative col-6 p-1 pe-0 overflow-auto" style="max-height: 192px;height: 192px;">
-          <div class="h-100" *ngIf="adventureData.images.length<4">
+          <div class="h-100" *ngIf="adventureData?.images.length<4">
             <img src="{{adventureData?.images[3] ? domain+adventureData.images[3].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
-          <div *ngIf="adventureData.images.length>4"  class="overlay-seemore h-100" data-bs-toggle="modal" data-bs-target="#seeMorePhotos">
+          <div *ngIf="adventureData?.images.length>4"  class="overlay-seemore h-100" data-bs-toggle="modal" data-bs-target="#seeMorePhotos">
             <img src="{{adventureData?.images[3] ? domain+adventureData.images[3].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
         </div>
@@ -72,7 +89,7 @@
 
   <div class="row my-5 gap-4">
 
-    <div *ngFor="let item of adventureData.steps ? adventureData.steps : []" class="col-12 d-none d-lg-flex gap-5">
+    <div *ngFor="let item of adventureData?.steps ? adventureData.steps : []" class="col-12 d-none d-lg-flex gap-5">
       <img src="{{domain+item?.image}}" class="rounded-5" style="min-width: 205px; width: 205px;min-height: 205px;height: 205px;object-fit: cover;">
       <div>
         <h2 class="font2 dot-before" style="font-weight: 700;font-size: 28px;">{{item?.title}}</h2>
@@ -80,7 +97,7 @@
       </div>
     </div>
 
-    <div *ngFor="let item of adventureData.steps ? adventureData.steps : []" class="col-12 d-flex flex-column d-lg-none gap-2">
+    <div *ngFor="let item of adventureData?.steps ? adventureData.steps : []" class="col-12 d-flex flex-column d-lg-none gap-2">
       <h2 class="font2 dot-before" style="font-weight: 700;font-size: 28px;">{{item?.title}}</h2>
       <img src="{{domain+item?.image}}" class="rounded-5" style="width: 100%;height: 100%;object-fit: cover;">
       <div>
@@ -103,7 +120,7 @@
       <div class="modal-body">
         <div class="row p-3">
 
-          <div *ngFor="let item of adventureData.images ? adventureData.images : []" class="col-lg-4 col-12 p-1">
+          <div *ngFor="let item of adventureData?.images ? adventureData.images : []" class="col-lg-4 col-12 p-1">
             <img src="{{domain+item?.image}}" class="rounded rounded-2" style="object-fit: cover;min-height: 300px;max-height: 300px; width: 100%; height: 100%;">
           </div>
 

@@ -12,6 +12,7 @@ import { environment as env } from '../../../environments/environment';
 export class AdventureDetailsComponent {
   domain = env.domain.slice(0,env.domain.length-1)
   categories:any;
+  URL:any = window.location
   adventureData:any;
   categ:any;
   emptyImg = 'assets/images/emptyImg.jpg';

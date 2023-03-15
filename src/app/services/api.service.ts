@@ -38,7 +38,6 @@ export class ApiService {
   }
 
   calcPrice(data:any){
-    console.log(data)
     return this.http.post(`${env.domain}orders/transportation/price/`,data)
   }
 

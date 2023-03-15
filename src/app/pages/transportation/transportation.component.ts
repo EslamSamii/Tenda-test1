@@ -3,6 +3,12 @@ import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
 import { environment as env } from '../../../environments/environment';
+import { CURRENCY } from 'src/app/shared/countryData';
+import {
+  SearchCountryField,
+  CountryISO,
+  PhoneNumberFormat,
+} from 'node_modules/ngx-intl-tel-input-gg';
 
 @Component({
   selector: 'app-transportation',
@@ -10,9 +16,21 @@ import { environment as env } from '../../../environments/environment';
   styleUrls: ['./transportation.component.scss']
 })
 export class TransportationComponent {
-
+  URL:any = window.location
   @Input('CategId') CategId:any
+  countryCode:any = 'us';
+  separateDialCode = true;
+  SearchCountryField = SearchCountryField;
+  CountryISO = CountryISO;
+  PhoneNumberFormat = PhoneNumberFormat;
 
+  currentVal:any;
+
+  maxNum = 10;
+  COUNTRY_DATA = CURRENCY
+
+  emailRe = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,16}$/;
+  numbersOnly= /^\d*$/;
   isLoading = false;
   isSuccess = false;
   isReturn = false;
@@ -35,16 +53,17 @@ export class TransportationComponent {
   categ:any;
   filteredOptions: Observable<any[]> | any;
   filteredtoPlace: Observable<any[]> | any;
+  data:any;
 
   domain = env.domain.slice(0,env.domain.length-1)
   emptyImg = 'assets/images/emptyImg.jpg';
 
   constructor(private api:ApiService) {
-    console.log(this.CategId)
   }
-
   ngOnInit() {
-
+    this.api.aboutUs().subscribe((res:any)=>{
+      this.data = res.result[0]
+    })
     this.api.adventuresDetails(this.CategId).subscribe((res:any)=>{
       this.adventureData = res.result;
       this.getCategory(res.result.category_id);
@@ -73,19 +92,15 @@ export class TransportationComponent {
     this.filteredOptions = this.fromPlace.valueChanges.pipe(
       startWith(''),
       map((value:any) => {
-        console.log(value)
-        console.log('//////////////')
+
         const name = value;
-        console.log(name)
         return name ? this._filter(name as string) : this.zones1.slice();
       }),
     );
-    console.log(this.filteredOptions)
 
     this.filteredtoPlace = this.toPlace.valueChanges.pipe(
       startWith(''),
       map((value:any) => {
-        console.log(value)
         const name = typeof value === 'string' ? value : value?.title;
         return name ? this._filter(name as string) : this.zones2.slice();
       }),
@@ -99,8 +114,7 @@ export class TransportationComponent {
     this.toPlace = new FormControl('',[Validators.required]);
     this.fname = new FormControl('',[Validators.required]);
     this.lname = new FormControl('',[Validators.required]);
-    this.email = new FormControl('',[Validators.required]);
-    this.phone = new FormControl('',[Validators.required]);
+    this.email = new FormControl('',[Validators.required,Validators.pattern(this.emailRe)]);
   }
   createForm(){
     this.es_form = new FormGroup({
@@ -111,21 +125,15 @@ export class TransportationComponent {
       fname:this.fname,
       lname:this.lname,
       email:this.email,
-      phone:this.phone
     })
   }
   // end form
   displayFn(user: any): string {
-    console.log(user)
     return user && user ? user : '';
   }
 
   private _filter(name: string): any[] {
     const filterValue = name.toLowerCase();
-    console.log('here')
-    console.log(this.fromPlace)
-    console.log(this.fromPlace.value)
-    console.log(this.zones.filter((option:any) => option.title.toLowerCase().includes(filterValue)))
     return this.zones.filter((option:any) => option.title.toLowerCase().includes(filterValue));
   }
   bookBtn(){
@@ -140,7 +148,7 @@ export class TransportationComponent {
       client_email:this.email.value,
       client_first_name:this.fname.value,
       client_last_name:this.lname.value,
-      client_phone_number:this.phone.value
+      client_phone_number:this.phone.number,
     }
     if(this.isReturn){
       body = {...body,
@@ -199,5 +207,67 @@ export class TransportationComponent {
       this.initFilters()
     });
   }
+  prevVal:any = '';
+  phoneValid =false;
+  emptyNum:any = true;
+  phoneTouched = false;
+  onChange2(){
+    setTimeout(() => {
+      let intNum:any = 0
+      if(this.phone && this.phone.number){
+        intNum=parseInt(this.phone.number.replace(/[- \\(\\)]*/g,''));
+        this.emptyNum = this.phone.number.replace(/[- \\(\\)]*/g,'').length;
+        this.emptyNum == 0 ? this.emptyNum = true: this.emptyNum = false;
+        this.phoneValid = this.numbersOnly.test(intNum);
 
+      }else{
+      this.emptyNum = true;
+
+      }
+
+      // libphonenumber
+      if(this.phone && this.phone.number && this.phone.number.replace(/[- \\(\\)+]*/g,'').length < 10){
+        this.phone.number = this.phone.number.slice(-10);
+        this.maxNum = 10;
+        return ;
+      }
+        if(this.phone?.number){
+          let mobileData = this.phone ? JSON.parse(JSON.stringify(this.phone)) : {}
+          if(this.currentVal == mobileData?.number.replace(/[- \\(\\)+]*/g,'')) {
+            this.maxNum = 10;
+            return
+          };
+          let num_ = mobileData.number.replace(/[- \\(\\)+]*/g,'');
+          let num = num_.slice(-10);
+          let phonePrefix = num_.replace(num,'')
+          this.currentVal = num;
+          let country:any = this.COUNTRY_DATA.filter((c:any)=>c['phone'] ==parseInt(phonePrefix))
+
+          // this.countryCode = country[0].code.toLowerCase();
+          if(country[0] && country[0].code){
+            this.phone ={
+                countryCode:country[0].code,
+                dialCode:'+'+phonePrefix,
+                e164Number:'+'+num_,
+                internationalNumber:'+'+phonePrefix+' '+num,
+                nationalNumber:num_,
+                number:num
+            }
+            intNum=parseInt(this.phone.number.replace(/[- \\(\\)+]*/g,''));
+            this.phoneValid = this.numbersOnly.test(intNum);
+            this.maxNum = 10;
+          }
+          this.maxNum = 10;
+
+      }
+
+    }, 5);
+
+  }
+  onChange0(){
+    setTimeout(() => {
+      this.phoneTouched = true
+      this.maxNum = 100;
+      },5)
+    }
 }

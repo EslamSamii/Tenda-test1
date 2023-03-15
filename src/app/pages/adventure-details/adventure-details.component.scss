@@ -1,5 +1,5 @@
-$white:#FFFDF3;
-$black:#0F0F0D;
+$white_:#FFFDF3;
+$black_:#0F0F0D;
 $blue1:#114286;
 $blue2:#4882D1;
 $blue3:#00C2FF;
@@ -47,7 +47,7 @@ $orange:#FBC972;
     -ms-transform: translate(-50%,-50%);
     -o-transform: translate(-50%,-50%);
     z-index: 2;
-    color: $white;
+    color: $white_;
     font-family: 'Open Sans', sans-serif !important;
   }
 

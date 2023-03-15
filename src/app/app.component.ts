@@ -1,10 +1,13 @@
 import { ApiService } from 'src/app/services/api.service';
 import { Component } from '@angular/core';
+import { routeTransitionAnimations } from './animation';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [routeTransitionAnimations]
 })
 export class AppComponent {
   flipColor = false;
@@ -14,6 +17,11 @@ export class AppComponent {
   constructor(private api:ApiService) {
 
   }
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet &&
+      outlet.activatedRouteData &&
+      outlet.activatedRouteData['animationState'];
+   }
   toggleDrawer(drawer:any){
     if(!drawer){
       this.sideNavOpen = true;

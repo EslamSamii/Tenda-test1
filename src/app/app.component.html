@@ -5,18 +5,20 @@
   </div>
   <div class="offcanvas-body">
     <ul class="list-unstyled px-3 m-0 d-flex flex-column gap-5 justify-content-center nav-links mt-4" style="width: 15rem;">
-      <li [routerLink]="['/home']" routerLinkActive="active"  class="fs-4 c-black">Home</li>
-      <li [routerLink]="['/explore']" routerLinkActive="active" class="fs-4 c-black">Explore</li>
-      <li [routerLink]="['/about']"  routerLinkActive="active" class="fs-4 c-black">About</li>
-      <li [routerLink]="['/contact-us']" routerLinkActive="active" class="fs-4 c-black">Contact Us</li>
+      <li data-bs-dismiss="offcanvas" [routerLink]="['/home']" routerLinkActive="active"  class="fs-4 c-black">Home</li>
+      <li data-bs-dismiss="offcanvas" [routerLink]="['/explore']" routerLinkActive="active" class="fs-4 c-black">Explore</li>
+      <li data-bs-dismiss="offcanvas" [routerLink]="['/about']"  routerLinkActive="active" class="fs-4 c-black">About</li>
+      <li data-bs-dismiss="offcanvas" [routerLink]="['/contact-us']" routerLinkActive="active" class="fs-4 c-black">Contact Us</li>
     </ul>
   </div>
 </div>
 
 
 <app-header [flipColor]="flipColor" [ngClass]="{'header-black': !isHome() || flipColor}" class="position-fixed top-0 w-100" style="z-index: 55;"></app-header>
-<router-outlet></router-outlet>
+<div [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>
 <app-footer></app-footer>
-<a href="https://wa.me/{{data.whatsapp_number}}" class="position-fixed" style="z-index: 3;bottom: 60px; right: 30px;display: block;width: 45px;height: 45px;">
+<a href="https://wa.me/{{data?.whatsapp_number}}" target="_blank" class="position-fixed hvr-grow" style="z-index: 3;bottom: 60px; right: 30px;display: block;width: 45px;height: 45px;">
   <img src="assets/images/whatsapp.png" style="width: 100%;height: 100%;object-fit: cover;">
 </a>
