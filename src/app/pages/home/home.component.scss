@@ -1,0 +1,116 @@
+.header{
+  height: 100vh;
+  background-size: cover;
+}
+
+.header1{
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(../../../assets/images/home-h1.jpg) center;
+
+}
+.header2{
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(../../../assets/images/home-h2.jpg) center;
+
+}
+.header3{
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(../../../assets/images/home-h3.jpg) center;
+
+}
+
+.ca-controles{
+
+}
+.ca1 , .ca2 , .ca3{
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.ca3{
+  z-index: 1;
+}
+.ca2{
+  z-index: 2;
+}
+.ca1{
+  z-index: 3;
+}
+.close{
+  animation: close 0.6s 0s linear;
+  -webkit-animation: close 0.6s 0s linear;
+}
+@keyframes close{
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+
+}
+.open{
+  animation: open 0.4s 0s linear;
+  -webkit-animation: open 0.4s 0s linear;
+}
+
+@keyframes open{
+  0%{
+    opacity: 0.9;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+.categ-overlay{
+  overflow: hidden;
+  .span-text{
+    z-index: 2;
+  }
+  & img{
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+  &:hover{
+    & img{
+      transition: all 0.3s ease;
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transform: scale(1.1);
+      -webkit-transform: scale(1.1);
+      -moz-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+      -o-transform: scale(1.1);
+    }
+  }
+  &::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(9, 6, 51);
+    z-index: 1;
+    opacity: 0.2;
+    display: block;
+  }
+}
+.hvr-grow
+{
+  transition: all 0.7s ease;
+  filter: brightness(1);
+  -webkit-filter: brightness(1);
+  -webkit-transition: all 0.7s ease;
+  -moz-transition: all 0.7s ease;
+  -ms-transition: all 0.7s ease;
+  -o-transition: all 0.7s ease;
+  &:hover
+{
+      filter: brightness(0.9);
+      -webkit-filter: brightness(0.9);
+}
+}

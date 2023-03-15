@@ -1,0 +1,123 @@
+<section class="container-lg w-100" style="margin-top: 100px;">
+  <div class="row">
+
+    <ng-container *ngIf="!isSuccess">
+      <h1 class="header-sec font1" style="font-size: 54px;line-height: 40px;">Contact Us</h1>
+      <p class="font2 my-4 p-0" style="font-size: 24px;line-height: 33px;">Enter your contact information and one of our team will reach you ASAP.</p>
+      <form [formGroup]="es_form" action="" class="mt-5">
+        <div class="row">
+
+          <div class="col-12 col-lg-6 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput1" style="font-size: 20px;" class="form-label font2">Email</label>
+            <input [ngClass]="{'border-danger':email.invalid && email.touched}" formControlName="email" type="email" class="form-control font2" id="FormControlInput1" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="name@example.com">
+            <!-- start errors -->
+            <span class="text-danger d-flex " *ngIf="email.invalid && email.touched">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="min-height:15px;min-width:15px" class="m-1 text-danger bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+              </svg>
+              <span class="text-danger text-wrap">
+                <span class="text-danger" *ngIf="email.errors.required">email is required</span>
+                <span class="text-danger" *ngIf="email.errors.pattern && email.dirty">email shoud be ****@Example.com</span>
+              </span>
+            </span>
+            <!-- end errors -->
+          </div>
+          <div class="col-12 col-lg-6 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput2" style="font-size: 20px;" class="form-label font2">Telephone</label>
+            <ngx-intl-tel-input  class="w-100" [cssClass]="(emptyNum || !phoneValid) && phoneTouched? 'border-danger form-control font2 default-input':'form-control font2 default-input'" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"
+                [preferredCountries]="[CountryISO.UnitedStates]"
+                [searchCountryFlag]="true" [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                [selectFirstCountry]="true" [phoneValidation]="true"
+                [separateDialCode]="separateDialCode" [numberFormat]="PhoneNumberFormat.National" name="phone"
+                [selectedCountryISO]="countryCode"
+                (ngModelChange)="onChange2()"
+                (keydown)="onChange()"
+                [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="phone"
+                >
+            </ngx-intl-tel-input>
+            <!-- start errors -->
+            <span class="text-danger d-flex " *ngIf="(emptyNum || !phoneValid) && phoneTouched">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="min-height:15px;min-width:15px" class="m-1 text-danger bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+              </svg>
+              <span class="text-danger text-wrap">
+                <span class="text-danger" *ngIf="emptyNum">Telephone is required</span>
+                <span class="text-danger" *ngIf="!phoneValid ">Wrong number</span>
+              </span>
+            </span>
+            <!-- end errors -->
+          </div>
+          <div class="col-12 col-lg-6 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput3" style="font-size: 20px;" class="form-label font2">First Name</label>
+            <input [ngClass]="{'border-danger':fname.invalid && fname.touched}" formControlName="fname" type="text" class="form-control font2" id="FormControlInput3" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="Enter your first name">
+                  <!-- start errors -->
+                  <span class="text-danger d-flex " *ngIf="fname.invalid && fname.touched">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="min-height:15px;min-width:15px" class="m-1 text-danger bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                    </svg>
+                    <span class="text-danger text-wrap">
+                      <span class="text-danger" *ngIf="fname.errors.required">First name is required</span>
+                    </span>
+                  </span>
+                  <!-- end errors -->
+          </div>
+          <div class="col-12 col-lg-6 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput4" style="font-size: 20px;" class="form-label font2">Last Name</label>
+            <input [ngClass]="{'border-danger':lname.invalid && lname.touched}"  formControlName="lname" type="text" class="form-control font2" id="FormControlInput4" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="Enter your last name">
+            <!-- start errors -->
+            <span class="text-danger d-flex " *ngIf="lname.invalid && lname.touched">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="min-height:15px;min-width:15px" class="m-1 text-danger bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+              </svg>
+              <span class="text-danger text-wrap">
+                <span class="text-danger" *ngIf="lname.errors.required">Last Name is required</span>
+              </span>
+            </span>
+            <!-- end errors -->
+          </div>
+
+          <div class="col-12 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput5" style="font-size: 20px;" class="form-label font2">Message</label>
+            <textarea [ngClass]="{'border-danger':message.invalid && message.touched}" formControlName="message" id="FormControlInput5" class="form-control font2" name="message" cols="30" rows="4" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="Enter your email"></textarea>
+                    <!-- start errors -->
+                    <span class="text-danger d-flex " *ngIf="message.invalid && message.touched">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="min-height:15px;min-width:15px" class="m-1 text-danger bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                      </svg>
+                      <span class="text-danger text-wrap">
+                        <span class="text-danger" *ngIf="message.errors.required">Message is required</span>
+                      </span>
+                    </span>
+                    <!-- end errors -->
+          </div>
+
+          <div class="col-12 p-3 my-3 d-flex flex-column gap-1">
+            <button (click)="bookBtn()" [disabled]="es_form.invalid || isLoading || emptyNum || !phoneValid" style="height: 54px;" mat-raised-button class="w-100 font2 bg-blue3 px-5 py-3 rounded rounded-3 btn text-white">
+              <div class="font2" style="font-size: 20px;font-weight: 700;">
+                <div *ngIf="isLoading" class="spinner-border text-light mx-1" style="width: 21px;height: 21px;font-size: 10px;" role="status"></div>
+                Send
+              </div>
+            </button>
+          </div>
+
+
+        </div>
+      </form>
+    </ng-container>
+
+
+
+    <div *ngIf="isSuccess" class="animate__animated animate__fadeInDown col-12 p-2 my-2 d-flex flex-column justify-content-center align-items-center">
+      <svg style="color: #fff;padding: 5px;" xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor" class="bi bi-check-lg bg-success rounded-circle " viewBox="0 0 16 16">
+        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+      </svg>
+      <h2 class="font1 my-5" style="font-weight: 700; font-size: 52px;">Congratulations!</h2>
+      <p class="font2" style="color: #828282;font-size: 16px;">Your request has been registered successfully</p>
+      <button [routerLink]="['/explore']" type="button" style="height: 54px;" mat-raised-button class="w-100 my-5 bg-blue3 px-5 py-3 rounded rounded-3 btn text-white">
+        <span class="font2" style="font-size: 18px;font-weight: 700;">Explore more adventures</span>
+      </button>
+    </div>
+  </div>
+
+</section>

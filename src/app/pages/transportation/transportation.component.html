@@ -1,0 +1,288 @@
+<section class="container-lg d-flex flex-column" style="margin-top: 100px;">
+
+    <div class="d-flex justify-content-between align-items-center">
+
+      <div class="d-flex justify-content-center flex-column">
+        <h2 style="font-size: 40px;">{{adventureData?.title}}</h2>
+        <div class="d-flex c-blue1 font2 mt-2" style="font-weight: 700 ;font-size: 28px;">
+          <img src="{{categ?.icon}}" class="mx-2" style="object-fit: cover;width: 13px">
+          {{categ?.title}}
+        </div>
+      </div>
+      <button mat-button [matMenuTriggerFor]="menu" mat-raised-button class="btn rounded-pill rounded px-4" style="background-color: #F2F2F2;height: 40px;">
+        <div class=" d-flex c-blue1 font2 fw-bold align-items-center" style="font-size: 14px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="c-blue1 mx-2 bi bi-share-fill" viewBox="0 0 16 16">
+            <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+          </svg>
+          Share
+        </div>
+      </button>
+      <mat-menu #menu="matMenu">
+        <div class="d-flex flex-nowrap gap-3 px-3 py-1 justify-content-center align-items-center">
+          <a matTooltip="Share on Facebook" href="https://www.facebook.com/sharer.php?u={{URL}}" target="_blank" class="text-decoration-none text-black">
+            <svg style="cursor: pointer;color: #3149c3;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+              <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+            </svg>
+          </a>
+          <a matTooltip="Share on Twitter" href="https://twitter.com/intent/tweet?text={{URL}}" target="_blank" class="text-decoration-none text-black">
+            <svg style="cursor: pointer;color: #6ea8ff;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+              <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+            </svg>
+          </a>
+          <div [cdkCopyToClipboard]="URL" matTooltip="Copy Link" class="text-decoration-none text-black " style="cursor: pointer;">
+            <mat-icon  style="width: 28px;height: 23px;font-size: 28px;">link</mat-icon>
+          </div>
+        </div>
+      </mat-menu>
+    </div>
+
+
+
+    <div class="row rounded-4 overflow-hidden mt-5 gap-3 gap-lg-0">
+      <div class="col-12 col-lg-6 ps-0 pe-1" style="max-height: 380px;height: 380px;">
+          <img src="{{adventureData?.image ? adventureData?.image  : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+      </div>
+      <div class="col-12 col-lg-6 row p-0 m-0 " style="max-height: 380px;height: 380px;">
+          <div class="col-6 p-1 pt-0 overflow-auto" style="max-height: 192px;height: 192px;">
+            <img src="{{adventureData?.images[0] ? domain+adventureData.images[0].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+          </div>
+          <div class="col-6 p-1 pt-0 pe-0 overflow-auto" style="max-height: 192px;height: 192px;">
+            <img src="{{adventureData?.images[1] ? domain+adventureData.images[1].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+          </div>
+          <div class="col-6 p-1 overflow-auto" style="max-height: 192px;height: 192px;">
+            <img src="{{adventureData?.images[2] ? domain+adventureData.images[2].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+          </div>
+          <div class="overflow-hidden position-relative col-6 p-1 pe-0 overflow-auto" style="max-height: 192px;height: 192px;">
+            <div class="h-100" *ngIf="adventureData?.images.length<4">
+              <img src="{{adventureData?.images[3] ? domain+adventureData.images[3].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+            </div>
+            <div *ngIf="adventureData?.images.length>4"  class="overlay-seemore h-100" data-bs-toggle="modal" data-bs-target="#seeMorePhotos">
+              <img src="{{adventureData?.images[3] ? domain+adventureData.images[3].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+
+
+    <p class="font2 my-5" style="line-height: 38.13px;font-size: 28px;">{{adventureData?.description}}</p>
+    <div *ngIf="!isSuccess" class="my-5">
+      <h2 class="font1" style="font-size: 40px;font-weight: 700;">Fill in the details below to book your transfer</h2>
+      <form [formGroup]="es_form">
+        <div class="row">
+
+          <div class="col-12 col-lg-4  p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput3" style="font-size: 20px;" class="form-label font2">First Name</label>
+            <input formControlName="fname" type="text" class="form-control font2" id="FormControlInput3" style="padding: 15px 20px; font-size: 18px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="Enter your first name">
+                       <!-- start errors -->
+                       <span class="text-danger d-flex " *ngIf="fname.invalid && fname.touched">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="min-height:15px;min-width:15px" class="m-1 text-danger bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                        </svg>
+                        <span class="text-danger text-wrap">
+                          <span class="text-danger" *ngIf="fname.errors.required">First name is required</span>
+                        </span>
+                      </span>
+                      <!-- end errors -->
+          </div>
+          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput4" style="font-size: 20px;" class="form-label font2">Last Name</label>
+            <input formControlName="lname" type="text" class="form-control font2" id="FormControlInput4" style="padding: 15px 20px; font-size: 18px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="Enter your last name">
+                      <!-- start errors -->
+                      <span class="text-danger d-flex " *ngIf="lname.invalid && lname.touched">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="min-height:15px;min-width:15px" class="m-1 text-danger bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                        </svg>
+                        <span class="text-danger text-wrap">
+                          <span class="text-danger" *ngIf="lname.errors.required">Last Name is required</span>
+                        </span>
+                      </span>
+                      <!-- end errors -->
+          </div>
+          <div class="d-none d-lg-block col-4"></div>
+          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput1" style="font-size: 20px;" class="form-label font2">Email</label>
+            <input formControlName="email" type="email" class="form-control font2" id="FormControlInput1" style="padding: 15px 20px; font-size: 18px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="name@example.com">
+                      <!-- start errors -->
+                      <span class="text-danger d-flex " *ngIf="email.invalid && email.touched">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="min-height:15px;min-width:15px" class="m-1 text-danger bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                        </svg>
+                        <span class="text-danger text-wrap">
+                          <span class="text-danger" *ngIf="email.errors.required">email is required</span>
+                          <span class="text-danger" *ngIf="email.errors.pattern && email.dirty">email shoud be ****@Example.com</span>
+                        </span>
+                      </span>
+                      <!-- end errors -->
+          </div>
+          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput2" style="font-size: 20px;" class="form-label font2">Telephone</label>
+            <ngx-intl-tel-input  class="w-100" [cssClass]="(emptyNum || !phoneValid) && phoneTouched? 'border-danger form-control font2 default-input':'form-control font2 default-input'" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"
+                [preferredCountries]="[CountryISO.UnitedStates]"
+                [searchCountryFlag]="true" [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                [selectFirstCountry]="true" [phoneValidation]="true"
+                [separateDialCode]="separateDialCode" [numberFormat]="PhoneNumberFormat.National" name="phone"
+                [selectedCountryISO]="countryCode"
+                (ngModelChange)="onChange2()"
+                (keydown)="onChange0()"
+                [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="phone"
+                >
+            </ngx-intl-tel-input>
+            <!-- start errors -->
+            <span class="text-danger d-flex " *ngIf="(emptyNum || !phoneValid) && phoneTouched">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="min-height:15px;min-width:15px" class="m-1 text-danger bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+              </svg>
+              <span class="text-danger text-wrap">
+                <span class="text-danger" *ngIf="emptyNum">Telephone is required</span>
+                <span class="text-danger" *ngIf="!phoneValid ">Wrong number</span>
+              </span>
+            </span>
+            <!-- end errors -->
+          </div>
+          <div class="d-none d-lg-block col-4"></div>
+
+          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput7" style="font-size: 20px;" class="form-label font2">Which airport do you arrive at?</label>
+            <input (change)="calcPrice()" matInput formControlName="fromPlace" [matAutocomplete]="auto" type="text" class="form-control font2" id="FormControlInput7" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="From">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <ng-container *ngFor="let option of filteredOptions | async">
+                <mat-option *ngIf="option.title !=toPlace.value" [value]="option.title">
+                  {{option.title}}
+                </mat-option>
+              </ng-container>
+
+
+            </mat-autocomplete>
+                <!-- start errors -->
+                <span class="text-danger d-flex " *ngIf="fromPlace.invalid && fromPlace.touched">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="min-height:15px;min-width:15px" class="m-1 text-danger bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                  </svg>
+                  <span class="text-danger text-wrap">
+                    <span class="text-danger" *ngIf="fromPlace.errors.required">location is required</span>
+                  </span>
+                </span>
+                <!-- end errors -->
+          </div>
+
+          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput4" style="font-size: 20px;" class="form-label font2">Where would you like to be dropped off?</label>
+            <input (change)="calcPrice()" matInput formControlName="toPlace" [matAutocomplete]="auto2" type="text" class="form-control font2" id="FormControlInput4" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="To">
+            <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayFn">
+              <ng-container *ngFor="let option of filteredtoPlace | async">
+                <mat-option *ngIf="option.title !=fromPlace.value" [value]="option.title">
+                  {{option.title}}
+                </mat-option>
+              </ng-container>
+            </mat-autocomplete>
+              <!-- start errors -->
+              <span class="text-danger d-flex " *ngIf="toPlace.invalid && toPlace.touched">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="min-height:15px;min-width:15px" class="m-1 text-danger bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+              </svg>
+              <span class="text-danger text-wrap">
+                <span class="text-danger" *ngIf="toPlace.errors.required">location is required</span>
+              </span>
+            </span>
+            <!-- end errors -->
+          </div>
+
+          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1 form-check form-switch justify-content-center">
+              <label for="flexSwitchCheckDefault" style="font-size: 20px;" class="form-label font2 form-check-label">Return</label>
+              <input type="checkbox" (change)="onChange($event)"  class="form-check-input m-0" id="FormControlInput4" style="padding: 18px 32px;background-color: #FFFDF3 !important;border-color: #FBC972;">
+          </div>
+
+          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput1" style="font-size: 20px;" class="form-label font2">When does your flight arrive?</label>
+            <input (change)="calcPrice()" formControlName="dateFrom" type="datetime-local" class="form-control font2" id="FormControlInput1" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" >
+                <!-- start errors -->
+                <span class="text-danger d-flex " *ngIf="dateFrom.invalid && dateFrom.touched">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="min-height:15px;min-width:15px" class="m-1 text-danger bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                  </svg>
+                  <span class="text-danger text-wrap">
+                    <span class="text-danger" *ngIf="dateFrom.errors.required">date is required</span>
+                  </span>
+                </span>
+                <!-- end errors -->
+          </div>
+
+          <div *ngIf="isReturn" class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput3" style="font-size: 20px;" class="form-label font2">When does your flight depart?</label>
+            <input [(ngModel)]="dateTo" [ngModelOptions]="{standalone: true}" type="datetime-local" class="form-control font2" id="FormControlInput3" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" >
+          </div>
+
+          <div class="col-12 col-lg-4 p-3 my-3 d-flex flex-column gap-1">
+            <label for="FormControlInput4" style="font-size: 20px;" class="form-label font2">Number of Persons</label>
+            <input (change)="calcPrice()" formControlName="persons" type="number" min="1" max="50" class="form-control font2" id="FormControlInput4" style="padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;" placeholder="0">
+            <!-- start errors -->
+            <span class="text-danger d-flex " *ngIf="persons.invalid && persons.touched">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="min-height:15px;min-width:15px" class="m-1 text-danger bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+              </svg>
+              <span class="text-danger text-wrap">
+                <span class="text-danger" *ngIf="persons.errors.required">number of persons is required</span>
+              </span>
+            </span>
+            <!-- end errors -->
+          </div>
+        </div>
+
+        <div *ngIf="!(es_form.invalid || isLoading || (!dateTo && isReturn) || emptyNum || !phoneValid)" class="d-flex align-items-center gap-2">
+          <span style="font-size: 20px;" class="font2 me-4">Transportation cost is</span>
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <span class="c-blue2 font2" style="font-size: 21px;font-weight: 700;">EGY</span>
+          </div>
+          <span class="c-blue2 font2" style="font-size: 40px;font-weight: 700;line-height: 58px;">{{totalPrice ? totalPrice : adventureData?.price}}</span>
+        </div>
+
+        <div class="col-12 p-3 d-flex flex-column gap-1 my-3">
+
+          <button type="button" (click)="bookBtn()" [disabled]="es_form.invalid || isLoading || (!dateTo && isReturn) || emptyNum || !phoneValid" style="height: 54px;" mat-raised-button class="w-100 font2 bg-blue3 px-5 py-3 rounded rounded-3 btn text-white">
+            <div style="font-size: 20px;font-weight: 700;" class="d-flex align-items-center font2">
+              <div *ngIf="isLoading" class="spinner-border text-light mx-1" style="width: 21px;height: 21px;font-size: 10px;" role="status"></div>
+              Complete Request
+            </div>
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+
+    <div *ngIf="isSuccess" class="animate__animated animate__fadeInDown p-2 my-2 d-flex flex-column justify-content-center align-items-center">
+      <svg style="color: #fff;padding: 5px;" xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor" class="bi bi-check-lg bg-success rounded-circle " viewBox="0 0 16 16">
+        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+      </svg>
+      <h2 class="font1 my-5" style="font-weight: 700; font-size: 52px;">Congratulations!</h2>
+      <p class="font2" style="color: #828282;font-size: 16px;">Your request has been registered successfully</p>
+      <button [routerLink]="['/explore']" type="button" style="height: 54px;" mat-raised-button class="w-100 my-5 bg-blue3 px-5 py-3 rounded rounded-3 btn text-white">
+        <span class="font2" style="font-size: 18px;font-weight: 700;">Explore more adventures</span>
+      </button>
+    </div>
+</section>
+<!-- start modals -->
+
+<div class="modal fade" id="seeMorePhotos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Photos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row p-3">
+
+          <div *ngFor="let item of adventureData?.images ? adventureData.images : []" class="col-lg-4 col-12 p-1">
+            <img src="{{domain+item?.image}}" class="rounded rounded-2" style="object-fit: cover;min-height: 300px;max-height: 300px; width: 100%; height: 100%;">
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modals -->

@@ -1,0 +1,93 @@
+.form-switch .form-check-input:checked{
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23FBC972'/%3e%3c/svg%3e") !important;
+}
+.form-switch .form-check-input:focus{
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23FBC972'/%3e%3c/svg%3e") !important;
+}
+$white_:#FFFDF3;
+$black_:#0F0F0D;
+$blue1:#114286;
+$blue2:#4882D1;
+$blue3:#00C2FF;
+$orange:#FBC972;
+
+.image-itm{
+  border-top-left-radius: 20px;
+  -webkit-border-top-left-radius: 20px;
+  -moz-border-top-left-radius: 20px;
+  -ms-border-top-left-radius: 20px;
+  -o-border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  -webkit-bottom-top-left-radius: 20px;
+  -moz-border-bottom-left-radius: 20px;
+  -ms-border-bottom-left-radius: 20px;
+  -o-border-bottom-left-radius: 20px;
+}
+.overlay-seemore{
+  position: relative;
+    cursor: pointer;
+    &::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: #0c0632;
+    opacity: 0.4;
+    display: block;
+  }
+  &::before{
+    content: "SEE ALL PHOTOS";
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 700;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    z-index: 2;
+    color: $white_;
+    font-family: 'Open Sans', sans-serif !important;
+  }
+
+}
+.dot-before{
+  display: flex;
+  align-items: center;
+  &::before{
+    content: "";
+    width: 7px;
+    height: 7px;
+    background-color: black;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    display: block;
+    margin: 0 10px;
+  }
+}
+button:disabled{
+  opacity: 0.4 !important;
+}
+::ng-deep .default-input{
+  padding: 15px 20px; font-size: 20px;background-color: #FFFDF3;border-color: #FBC972;
+}
+::ng-deep ngx-intl-tel-input >div{
+  width: 100%;
+
+}
+::ng-deep  #country-search-box{
+  padding: 12px;
+  &:focus-visible{
+    outline: 0;
+  }
+}
