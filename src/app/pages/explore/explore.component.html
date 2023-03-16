@@ -4,7 +4,7 @@
       ALL
     </button>
     <ng-container *ngFor="let item of categories">
-      <button [routerLink]="['../explore']" [queryParams]="{'filter':item.id}" routerLinkActive="bg-blue2" class="btn  py-2 px-3 font2 rounded rounded-pill" style="font-size: 16px;font-weight: 700;">
+      <button [routerLink]="['../explore']" [queryParams]="{'filter':item.id,'d':item.title}" routerLinkActive="bg-blue2" class="btn  py-2 px-3 font2 rounded rounded-pill" style="font-size: 16px;font-weight: 700;">
         <div class="d-flex align-items-center font2 justify-content-center">
           <mat-icon class="mx-1" style="width: 22px !important;height: 22px !important;font-size: 22px;">{{item?.icon}}</mat-icon>
           {{item.title | uppercase}}
@@ -19,7 +19,7 @@
       ALL
     </button>
     <ng-container *ngFor="let item of categories">
-      <button [routerLink]="['../explore']" [queryParams]="{'filter':item.id}" routerLinkActive="bg-blue2" class="btn  py-2 px-3  rounded rounded-pill" style="font-size: 16px;font-weight: 700;">
+      <button [routerLink]="['../explore']" [queryParams]="{'filter':item.id,'d':item.title}" routerLinkActive="bg-blue2" class="btn  py-2 px-3  rounded rounded-pill" style="font-size: 16px;font-weight: 700;">
         <div class="d-flex align-items-center font2 justify-content-center">
           <mat-icon class="mx-1" style="width: 22px !important;height: 22px !important;font-size: 22px;">{{item?.icon}}</mat-icon>
           {{item.title | uppercase}}
@@ -33,18 +33,18 @@
 
     <ng-container *ngFor="let item of adventuresData?.result ? adventuresData.result : []">
           <!-- start loop -->
-    <ng-container *ngIf="item.title == 'transport' && !isAll">
+    <ng-container *ngIf="transportation && !isAll">
       <app-transportation [CategId]="item?.category_id"></app-transportation>
     </ng-container>
 
-    <div *ngIf="item.title != 'transport'" class="col-12 col-md-6 col-lg-4 p-2  fadeInUp animated">
+    <div *ngIf="!transportation" class="col-12 col-md-6 col-lg-4 p-2  fadeInUp animated">
       <div class=" rounded rounded-4 d-flex flex-column overflow-hidden h-100" style="background-color: #FFFDF3;">
         <div class="overflow-hidden position-relative w-100" style="height: 380px;">
           <img class="hvr-grow w-100 h-100" [routerLink]="['/adventure/'+ item?.id]" src="{{item?.image}}" style="cursor: pointer; object-fit: cover;">
         </div>
-        <div class="p-3 d-flex flex-column justify-content-between" style="height: 280px;">
+        <div class="p-3 d-flex flex-column justify-content-between" style="min-height: 280px;">
           <div>
-              <h3 class="m-0 font1" style="font-weight: 600; font-size: 28px;">{{item?.title}}</h3>
+              <h3 class="m-0 font1" style="font-weight: 600; font-size: 24px;">{{item?.title}}</h3>
             <div class="d-flex justify-content-between align-items-center my-3">
               <div class="d-flex c-blue1 font2 align-items-center" style="font-size: 20px;font-weight: 700;">
                 <!-- <img class="me-1" style="object-fit: cover;width: 13px" src="assets/images/categ1.svg" alt=""> -->
