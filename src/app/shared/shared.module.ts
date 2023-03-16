@@ -6,10 +6,12 @@ import { CommonModule } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { LogoInTextPipe } from './logo-in-text.pipe';
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LogoInTextPipe
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
   ],
   exports:[
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LogoInTextPipe
   ]
 })
 export class SharedModule { }

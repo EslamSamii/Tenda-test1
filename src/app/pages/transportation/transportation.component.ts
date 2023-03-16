@@ -64,6 +64,7 @@ export class TransportationComponent {
     this.api.aboutUs().subscribe((res:any)=>{
       this.data = res.result[0]
     })
+    console.log(this.CategId)
     this.api.adventuresDetails(this.CategId).subscribe((res:any)=>{
       this.adventureData = res.result;
       this.getCategory(res.result.category_id);

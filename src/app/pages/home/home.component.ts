@@ -35,16 +35,16 @@ export class HomeComponent {
     },6000)
 
   }
-  ScrollLeft(element:any){
-    let Left:any = element.scrollLeft -450
+  ScrollLeft(element:any,num=450){
+    let Left:any = element.scrollLeft -num
 
     element.scrollTo({
       left: Left,
       behavior: 'smooth'
     });
   }
-  ScrollRight(element:any){
-    let Left:any = element.scrollLeft +450
+  ScrollRight(element:any,num=450){
+    let Left:any = element.scrollLeft +num
 
     element.scrollTo({
       left: Left,
@@ -120,6 +120,9 @@ export class HomeComponent {
       },550)
 
     }
+  }
+  setText(title:any){
+    return title.replace('tenda','<span class="font3">tenda</span>')
   }
   getSlider(){
     this.api.slidersList().subscribe((res)=>{
