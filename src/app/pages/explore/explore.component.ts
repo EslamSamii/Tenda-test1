@@ -20,8 +20,11 @@ export class ExploreComponent {
   }
   transportation = false;
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+    this.getCategories()
+
+
+  }
+  checkParams(){
     let f:any  = this.activatedRounte.snapshot.queryParams;
     if(!f.filter){
       this.router.navigateByUrl('/explore?filter=')
@@ -33,8 +36,6 @@ export class ExploreComponent {
       else
         this.transportation = false;
 
-
-
        if(params.filter && params.filter!=''){
         this.adventures(params.filter);
         this.isAll = false;
@@ -45,12 +46,12 @@ export class ExploreComponent {
         this.isAll = true;
       }
     })
-    this.getCategories()
-
   }
   getCategories(){
     this.api.categories().subscribe((res:any)=>{
       this.categories = res;
+      this.checkParams();
+
     },
     (err)=>{
     }
@@ -58,7 +59,19 @@ export class ExploreComponent {
   }
   adventures(id:any){
     this.api.adventuresList(id).subscribe((res:any)=>{
-      this.adventuresData = res;
+        console.log(id)
+        if(id === ''){
+        let categTrans = this.categories.filter((categ:any)=> categ.title == 'transportation')[0];
+        console.log(categTrans)
+        console.log(res)
+        this.adventuresData = res
+        this.adventuresData.result = this.adventuresData.result.filter((r:any)=>r.category_id != categTrans.id);
+
+        console.log(this.adventuresData)
+      }else{
+        this.adventuresData = res;
+
+      }
     })
   }
   getCateg(id:any){

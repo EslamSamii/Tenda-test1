@@ -6,7 +6,7 @@
     <ng-container *ngFor="let item of categories">
       <button [routerLink]="['../explore']" [queryParams]="{'filter':item.id,'d':item.title}" routerLinkActive="bg-blue2" class="btn  py-2 px-3 font2 rounded rounded-pill" style="font-size: 16px;font-weight: 700;">
         <div class="d-flex align-items-center font2 justify-content-center">
-          <mat-icon class="mx-1" style="width: 22px !important;height: 22px !important;font-size: 22px;">{{item?.icon}}</mat-icon>
+          <mat-icon class="mx-1 material-symbols-outlined" style="width: 22px !important;height: 22px !important;font-size: 22px;">{{item?.icon}}</mat-icon>
           {{item.title | uppercase}}
         </div>
       </button>
@@ -21,7 +21,7 @@
     <ng-container *ngFor="let item of categories">
       <button [routerLink]="['../explore']" [queryParams]="{'filter':item.id,'d':item.title}" routerLinkActive="bg-blue2" class="btn  py-2 px-3  rounded rounded-pill" style="font-size: 16px;font-weight: 700;">
         <div class="d-flex align-items-center font2 justify-content-center">
-          <mat-icon class="mx-1" style="width: 22px !important;height: 22px !important;font-size: 22px;">{{item?.icon}}</mat-icon>
+          <mat-icon class="mx-1 material-symbols-outlined" style="width: 22px !important;height: 22px !important;font-size: 22px;">{{item?.icon}}</mat-icon>
           {{item.title | uppercase}}
         </div>
       </button>
@@ -34,7 +34,7 @@
     <ng-container *ngFor="let item of adventuresData?.result ? adventuresData.result : []">
           <!-- start loop -->
     <ng-container *ngIf="transportation && !isAll">
-      <app-transportation [CategId]="item?.category_id"></app-transportation>
+      <app-transportation [CategId]="item?.id"></app-transportation>
     </ng-container>
 
     <div *ngIf="!transportation" class="col-12 col-md-6 col-lg-4 p-2  fadeInUp animated">
@@ -48,7 +48,7 @@
             <div class="d-flex justify-content-between align-items-center my-3">
               <div class="d-flex c-blue1 font2 align-items-center" style="font-size: 20px;font-weight: 700;">
                 <!-- <img class="me-1" style="object-fit: cover;width: 13px" src="assets/images/categ1.svg" alt=""> -->
-                <mat-icon style="width: 26px;height: 26px;font-size: 26px;" class="c-blue1 mx-2">{{getCateg(item.category_id).icon}}</mat-icon>
+                <mat-icon style="width: 26px;height: 26px;font-size: 26px;" class="c-blue1 mx-2 material-symbols-outlined">{{getCateg(item.category_id)?.icon}}</mat-icon>
 
                 {{getCateg(item.category_id)?.title}}
               </div>
