@@ -18,6 +18,7 @@ export class ExploreComponent {
     private api:ApiService){
 
   }
+  transportation = false;
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
@@ -27,6 +28,11 @@ export class ExploreComponent {
 
     }
     this.activatedRounte.queryParams.subscribe((params:any)=>{
+      if(params.d && params.d == 'transportation')
+        this.transportation = true;
+      else
+        this.transportation = false;
+
 
 
        if(params.filter && params.filter!=''){
