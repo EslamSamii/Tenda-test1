@@ -20,6 +20,9 @@ export class AdventureDetailsComponent {
 
   }
   ngOnInit(): void {
+    window.scrollTo({
+      top: 0
+    });
     let params:any = this.activatedRoute.snapshot.params;
     this.api.adventuresDetails(params.id).subscribe((res:any)=>{
       this.adventureData = res.result;

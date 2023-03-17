@@ -44,20 +44,20 @@
       </div>
       <div class="col-12 col-lg-6 row p-0 m-0 " style="max-height: 380px;height: 380px;">
           <div class="col-6 p-1 pt-0 overflow-auto" style="max-height: 192px;height: 192px;">
-            <img src="{{adventureData?.images[0] ? domain+adventureData.images[0].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+            <img src="{{adventureData?.images[0] ? adventureData.images[0].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
           <div class="col-6 p-1 pt-0 pe-0 overflow-auto" style="max-height: 192px;height: 192px;">
-            <img src="{{adventureData?.images[1] ? domain+adventureData.images[1].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+            <img src="{{adventureData?.images[1] ? adventureData.images[1].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
           <div class="col-6 p-1 overflow-auto" style="max-height: 192px;height: 192px;">
-            <img src="{{adventureData?.images[2] ? domain+adventureData.images[2].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+            <img src="{{adventureData?.images[2] ? adventureData.images[2].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
           <div class="overflow-hidden position-relative col-6 p-1 pe-0 overflow-auto" style="max-height: 192px;height: 192px;">
             <div class="h-100" *ngIf="adventureData?.images.length<4">
-              <img src="{{adventureData?.images[3] ? domain+adventureData.images[3].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+              <img src="{{adventureData?.images[3] ? adventureData.images[3].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
             </div>
             <div *ngIf="adventureData?.images.length>4"  class="overlay-seemore h-100" data-bs-toggle="modal" data-bs-target="#seeMorePhotos">
-              <img src="{{adventureData?.images[3] ? domain+adventureData.images[3].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+              <img src="{{adventureData?.images[3] ? adventureData.images[3].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
             </div>
           </div>
       </div>
@@ -65,10 +65,13 @@
 
 
 
-
-    <p class="font2 my-5" style="line-height: 38.13px;font-size: 28px;">{{adventureData?.description}}</p>
+    <p  class="font2 my-5 d-flex flex-column gap-4" >
+      <ng-container *ngFor="let item of adventureData?.description.split('•');let i = index">
+        <span class="font2" style="line-height: 28px;font-size: 20px;" ><span *ngIf="i!=0">• </span>{{item}}</span>
+      </ng-container>
+    </p>
     <div *ngIf="!isSuccess" class="my-5">
-      <h2 class="font1" style="font-size: 40px;font-weight: 700;line-height: 40px;">Fill in the details below to book your transfer</h2>
+      <h2 class="font1" style="font-size: 38px;font-weight: 700;line-height: 40px;">Fill in the details below to book your transfer</h2>
       <form [formGroup]="es_form">
         <div class="row">
 
@@ -275,7 +278,7 @@
         <div class="row p-3">
 
           <div *ngFor="let item of adventureData?.images ? adventureData.images : []" class="col-lg-4 col-12 p-1">
-            <img src="{{domain+item?.image}}" class="rounded rounded-2" style="object-fit: cover;min-height: 300px;max-height: 300px; width: 100%; height: 100%;">
+            <img src="{{item?.image}}" class="rounded rounded-2" style="object-fit: cover;min-height: 300px;max-height: 300px; width: 100%; height: 100%;">
           </div>
 
         </div>

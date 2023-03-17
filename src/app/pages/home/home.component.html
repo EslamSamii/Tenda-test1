@@ -172,7 +172,7 @@
   <div class="row justify-content-center w-100 d-none d-lg-flex" style="margin-top: 30px;">
     <ng-container *ngFor="let item of categories">
       <div class="col-12 col-md-6 col-lg-3 p-3">
-        <div [routerLink]="['../explore']" [queryParams]="{'filter':item.id}" class="categ-overlay rounded rounded-5 overflow-hidden position-relative" style="height: 450px;cursor: pointer;">
+        <div [routerLink]="['../explore']" [queryParams]="{'filter':item.id,'d':item.title}"  class="categ-overlay rounded rounded-5 overflow-hidden position-relative" style="height: 450px;cursor: pointer;">
           <img src="{{item.image}}" alt="" class="h-100 w-100" style="object-fit: cover;">
           <div class="span-text d-flex c-white position-absolute align-items-center bottom-0 start-50 translate-middle-x mb-5 font2">
             <mat-icon style="width: 26px;height: 26px;font-size: 26px;" class="c-white mx-2 material-symbols-outlined">{{item.icon}}</mat-icon>
@@ -189,7 +189,7 @@
 
       <ng-container *ngFor="let item of categories">
         <div class="col-12 col-md-6 col-lg-3 p-3">
-          <div [routerLink]="['../explore']" [queryParams]="{'filter':item.id}" class="categ-overlay rounded rounded-5 overflow-hidden position-relative" style="height: 450px;cursor: pointer;">
+          <div [routerLink]="['../explore']" [queryParams]="{'filter':item.id,'d':item.title}" class="categ-overlay rounded rounded-5 overflow-hidden position-relative" style="height: 450px;cursor: pointer;">
             <img src="{{item.image}}" alt="" class="h-100 w-100" style="object-fit: cover;">
             <div class="span-text d-flex c-white position-absolute align-items-center bottom-0 start-50 translate-middle-x mb-5 font2">
               <mat-icon style="width: 26px;height: 26px;font-size: 26px;" class="c-white mx-2 material-symbols-outlined">{{item.icon}}</mat-icon>

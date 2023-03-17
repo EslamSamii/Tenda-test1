@@ -40,6 +40,9 @@ export class ContactUsComponent {
   constructor(private api:ApiService) {
   }
   ngOnInit(): void {
+    window.scrollTo({
+      top: 0
+    });
     // controls
     this.initFormControles()
     //form creation

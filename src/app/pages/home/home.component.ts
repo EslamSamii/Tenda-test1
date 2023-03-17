@@ -26,7 +26,7 @@ export class HomeComponent {
 
   }
   ngOnInit(): void {
-    this.adventures('');
+
     this.getSlider();
     this.getCategories()
 
@@ -142,7 +142,14 @@ export class HomeComponent {
   categories:any;
   adventures(id:any){
     this.api.adventuresList(id).subscribe((res:any)=>{
-      this.adventuresData = res;
+      if(id === ''){
+        let categTrans = this.categories.filter((categ:any)=> categ.title == 'transportation')[0];
+        this.adventuresData = res
+        this.adventuresData.result = this.adventuresData.result.filter((r:any)=>r.category_id != categTrans.id);
+      }else{
+        this.adventuresData = res;
+
+      }
     })
   }
   getCateg(id:any){
@@ -155,6 +162,7 @@ export class HomeComponent {
   getCategories(){
     this.api.categories().subscribe((res:any)=>{
       this.categories = res;
+      this.adventures('');
     },
     (err)=>{
     }
