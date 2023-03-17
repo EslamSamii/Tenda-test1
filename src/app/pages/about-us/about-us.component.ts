@@ -11,6 +11,9 @@ export class AboutUsComponent {
   constructor(private api: ApiService) {
   }
   ngOnInit(): void {
+    window.scrollTo({
+      top: 0
+    });
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.api.aboutUs().subscribe((res:any)=>{

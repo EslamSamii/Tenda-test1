@@ -20,8 +20,10 @@ export class ExploreComponent {
   }
   transportation = false;
   ngOnInit(): void {
+    window.scrollTo({
+      top: 0
+    });
     this.getCategories()
-
 
   }
   checkParams(){
@@ -59,15 +61,10 @@ export class ExploreComponent {
   }
   adventures(id:any){
     this.api.adventuresList(id).subscribe((res:any)=>{
-        console.log(id)
         if(id === ''){
         let categTrans = this.categories.filter((categ:any)=> categ.title == 'transportation')[0];
-        console.log(categTrans)
-        console.log(res)
         this.adventuresData = res
         this.adventuresData.result = this.adventuresData.result.filter((r:any)=>r.category_id != categTrans.id);
-
-        console.log(this.adventuresData)
       }else{
         this.adventuresData = res;
 

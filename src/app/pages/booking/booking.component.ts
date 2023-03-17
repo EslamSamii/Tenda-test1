@@ -45,6 +45,9 @@ export class BookingComponent {
   constructor(private activatedroute:ActivatedRoute,private api:ApiService) {
   }
   ngOnInit(): void {
+    window.scrollTo({
+      top: 0
+    });
     this.getCategories()
     // controls
     this.initFormControles()
@@ -100,8 +103,10 @@ export class BookingComponent {
     )
   }
   getCateg(id:any){
-    let name = this.categories.filter((f:any) => f.id == id);
-    return name[0]
+    if(this.categories){
+      let name = this.categories.filter((f:any) => f.id == id);
+      return name[0]
+    }
   }
   prevVal:any = '';
   phoneValid =false;

@@ -4,23 +4,23 @@
     <div class="d-flex d-lg-none col-12 col-lg-4 p-2 my-2">
       <div class=" rounded rounded-4 d-flex flex-column overflow-hidden h-100" style="background-color: #FFFDF3;">
         <div class="overflow-hidden position-relative w-100" style="height: 380px;">
-          <img class="hvr-grow w-100 h-100" [routerLink]="['/adventure/'+ adventureData.id]" src="{{adventureData.image}}" style="cursor: pointer; object-fit: cover;">
+          <img class="hvr-grow w-100 h-100" [routerLink]="['/adventure/'+ adventureData?.id]" src="{{adventureData?.image}}" style="cursor: pointer; object-fit: cover;">
         </div>
         <div class="p-3">
-          <h3 class="m-0 mt-3 font1" style="font-weight: 600; font-size: 24px;">{{adventureData.title}}</h3>
+          <h3 class="m-0 mt-3 font1" style="font-weight: 600; font-size: 24px;">{{adventureData?.title}}</h3>
           <div class="d-flex justify-content-between align-items-center my-3">
             <div class="d-flex c-blue1 font2 align-items-center" style="font-size: 20px;font-weight: 700;">
-            <mat-icon style="width: 26px;height: 26px;font-size: 26px;" class="c-blue1 mx-2 material-symbols-outlined">{{getCateg(adventureData.category_id)?.icon}}</mat-icon>
+            <mat-icon style="width: 26px;height: 26px;font-size: 26px;" class="c-blue1 mx-2 material-symbols-outlined">{{getCateg(adventureData?.category_id)?.icon}}</mat-icon>
 
               <!-- <img class="me-1" style="object-fit: cover;width: 13px" src="assets/images/categ1.svg" alt=""> -->
 
-              {{getCateg(adventureData.category_id).title}}
+              {{getCateg(adventureData?.category_id)?.title}}
             </div>
-            <p class="m-0 c-blue3 font2" style="font-size: 20px">{{adventureData.date}}</p>
+            <p class="m-0 c-blue3 font2" style="font-size: 20px">{{adventureData?.date}}</p>
             <!-- <p class="m-0 c-blue3" style="font-size: 20px"> 15 <span class="mx-1" style="color: #767E86;">to</span> 8 6</p> -->
 
           </div>
-          <p class="font2 my-4 line-overflow-4" style="font-size: 18px;">{{adventureData.description}}</p>
+          <p class="font2 my-4 line-overflow-4" style="font-size: 18px;">{{adventureData?.description}}</p>
 
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex gap-2">
@@ -39,7 +39,7 @@
 
     <div *ngIf="!isSuccess" class="col-12 col-lg-8 p-2 my-2">
       <h1 class="header-sec font1" style="font-size: 55px;">Booking Now</h1>
-      <p class="font2 my-5 p-0" style="line-height: 20px; font-size: 16px;color:#828282;">You’re about to book a Diving Service “{{adventureData.title}}” from {{adventureData.date}} </p>
+      <p class="font2 my-5 p-0" style="line-height: 20px; font-size: 16px;color:#828282;">You’re about to book a Diving Service “{{adventureData?.title}}” from {{adventureData?.date}} </p>
       <form [formGroup]="es_form" action="" class="mt-5">
         <div class="row">
           <div class="col-12 col-lg-6 p-3 my-3 d-flex flex-column gap-1">
@@ -144,22 +144,22 @@
     <div class="d-none d-lg-flex col-12 col-lg-4 p-2 my-2">
       <div class=" rounded rounded-4 d-flex flex-column overflow-hidden h-100" style="background-color: #FFFDF3;">
         <div class="overflow-hidden position-relative w-100" style="height: 380px;">
-          <img class="hvr-grow w-100 h-100" [routerLink]="['/adventure/'+ adventureData.id]" src="{{adventureData.image}}" style="cursor: pointer; object-fit: cover;">
+          <img class="hvr-grow w-100 h-100" [routerLink]="['/adventure/'+ adventureData?.id]" src="{{adventureData?.image}}" style="cursor: pointer; object-fit: cover;">
         </div>
         <div class="p-3">
-          <h3 class="m-0 mt-3 font1" style="font-weight: 600; font-size: 24px;">{{adventureData.title}}</h3>
+          <h3 class="m-0 mt-3 font1" style="font-weight: 600; font-size: 24px;">{{adventureData?.title}}</h3>
           <div class="d-flex justify-content-between align-items-center my-3">
             <div class="d-flex c-blue1 font2 align-items-center" style="font-size: 20px;font-weight: 700;">
               <!-- <img class="me-1" style="object-fit: cover;width: 13px" src="assets/images/categ1.svg" alt=""> -->
-              <mat-icon style="width: 26px;height: 26px;font-size: 26px;" class="c-blue1 mx-2 material-symbols-outlined">{{getCateg(adventureData.category_id)?.icon}}</mat-icon>
+              <mat-icon style="width: 26px;height: 26px;font-size: 26px;" class="c-blue1 mx-2 material-symbols-outlined">{{getCateg(adventureData?.category_id)?.icon}}</mat-icon>
 
-              {{getCateg(adventureData.category_id).title}}
+              {{getCateg(adventureData?.category_id)?.title}}
             </div>
-            <p class="m-0 c-blue3 font2" style="font-size: 20px">{{adventureData.date}}</p>
+            <p class="m-0 c-blue3 font2" style="font-size: 20px">{{adventureData?.date}}</p>
             <!-- <p class="m-0 c-blue3" style="font-size: 20px"> 15 <span class="mx-1" style="color: #767E86;">to</span> 8 6</p> -->
 
           </div>
-          <p class="font2 my-4 line-overflow-4" style="font-size: 18px;">{{adventureData.description}}</p>
+          <p class="font2 my-4 line-overflow-4" style="font-size: 18px;">{{adventureData?.description}}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex gap-2">
               <div class="d-flex flex-column justify-content-center  align-items-start">
