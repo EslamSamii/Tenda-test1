@@ -22,6 +22,7 @@ export class HomeComponent {
   close = 2;
   selectedSlider = 1;
   isProcessing=false;
+  timer$:any;
   constructor(private api:ApiService) {
 
   }
@@ -30,7 +31,7 @@ export class HomeComponent {
     this.getSlider();
     this.getCategories()
 
-    setInterval(()=>{
+    this.timer$ = setInterval(()=>{
       this.next(true)
     },6000)
 
@@ -71,13 +72,16 @@ export class HomeComponent {
           break;
         }
       };
+
       this.selectedSlider = next_ID;
       this.close = prev_ID;
       setTimeout(()=>{
-        this.z_order[prev_ID] = this.z_order[next_ID];
-        this.z_order[next_ID] = sliders_.length;
+        for(let [key,order] of Object.entries(this.z_order)){
+          this.z_order[key] = ((this.z_order[key]+1) % this.z_order.length) ==0? 1 :(this.z_order[key]+1) % this.z_order.length
+        }
         this.isProcessing = false
-      },580)
+
+      },600)
 
 
     }else if(next === false){
@@ -95,29 +99,45 @@ export class HomeComponent {
           break;
         }
       };
+
       this.selectedSlider = next_ID;
       this.close = prev_ID;
       setTimeout(()=>{
-        this.z_order[prev_ID] = this.z_order[next_ID];
-        this.z_order[next_ID] = sliders_.length;
-        this.isProcessing = false
-      },580)
+        for(let [key,order] of Object.entries(this.z_order)){
+          this.z_order[key] = (this.z_order[key]-1) == 0? this.z_order.length-1 :(this.z_order[key]-1)
+        }
+        this.isProcessing = false;
+
+      },600)
     }else{
       if(next == this.selectedSlider) {
         this.isProcessing = false;
         return
       }
+      clearInterval(this.timer$)
+
+
       // this.selectedSlider = (this.selectedSlider+1)%this.sliders.length ? (this.selectedSlider+1)%this.sliders.length : 1;
       let prev_ID = this.z_order.findIndex((res:any)=> res == this.sliders.length);
+      let prevP_ID = this.z_order.findIndex((res:any)=> res == this.sliders.length-1);
       let next_ID = next;
       let sliders_:any = [...this.sliders]
+
       this.selectedSlider = next_ID;
       this.close = prev_ID;
+      this.z_order[prevP_ID] = this.z_order[next_ID];
+      this.z_order[next_ID] = sliders_.length-1;
+
       setTimeout(()=>{
         this.z_order[prev_ID] = this.z_order[next_ID];
         this.z_order[next_ID] = sliders_.length;
-        this.isProcessing = false
-      },550)
+        this.isProcessing = false;
+
+        this.timer$ = setInterval(()=>{
+          this.next(true)
+        },6000)
+
+      },600)
 
     }
   }

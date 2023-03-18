@@ -10,6 +10,7 @@ import { environment as env } from '../../../environments/environment';
   styleUrls: ['./adventure-details.component.scss']
 })
 export class AdventureDetailsComponent {
+  selectedIMG:any = ''
   domain = env.domain.slice(0,env.domain.length-1)
   categories:any;
   URL:any = window.location
