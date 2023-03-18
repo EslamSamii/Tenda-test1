@@ -16,6 +16,7 @@ import {
   styleUrls: ['./transportation.component.scss']
 })
 export class TransportationComponent {
+  selectedIMG:any = ''
   URL:any = window.location
   @Input('CategId') CategId:any
   countryCode:any = 'us';
