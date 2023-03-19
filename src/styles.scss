@@ -204,3 +204,13 @@ $orange:#FBC972;
 .modal-backdrop{
   display: none !important;
 }
+body{
+  overflow: auto !important;
+}
+.modal{
+  height: 100vh !important;
+}
+.modal-body{
+  height: 80vh;
+  overflow: auto;
+}

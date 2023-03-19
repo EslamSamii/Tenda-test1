@@ -154,6 +154,7 @@ export class TransportationComponent {
       client_first_name:this.fname.value,
       client_last_name:this.lname.value,
       client_phone_number:this.phone.number,
+      adventure:this.adventureData.id,
     }
     if(this.isReturn){
       body = {...body,
