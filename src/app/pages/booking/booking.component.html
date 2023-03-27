@@ -87,26 +87,26 @@
           </div>
           <div class="col-12 col-lg-6 p-3 my-3 d-flex flex-column gap-1">
             <label for="FormControlInput2" style="font-size: 20px;" class="form-label font2">Telephone</label>
-            <ngx-intl-tel-input  class="w-100" [cssClass]="(emptyNum || !phoneValid) && phoneTouched? 'border-danger form-control font2 default-input':'form-control font2 default-input'" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"
+            <ngx-intl-tel-input  class="w-100" [cssClass]="phone.invalid && phone.touched? 'border-danger form-control font2 default-input':'form-control font2 default-input'" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"
                 [preferredCountries]="[CountryISO.UnitedStates]"
                 [searchCountryFlag]="true" [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
                 [selectFirstCountry]="true" [phoneValidation]="true"
                 [separateDialCode]="separateDialCode" [numberFormat]="PhoneNumberFormat.National" name="phone"
                 [selectedCountryISO]="countryCode"
-                (ngModelChange)="onChange2()"
-                (keydown)="onChange()"
-                [ngModelOptions]="{standalone: true}"
-                [(ngModel)]="phone"
+                formControlName="phone"
+                [maxLength]="15"
                 >
             </ngx-intl-tel-input>
             <!-- start errors -->
-            <span class="text-danger d-flex " *ngIf="(emptyNum || !phoneValid) && phoneTouched">
+            <span class="text-danger d-flex " *ngIf="phone.invalid && phone.touched">
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" style="min-height:15px;min-width:15px" class="m-1 text-danger bi-exclamation-circle-fill" viewBox="0 0 16 16">
                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
               </svg>
               <span class="text-danger text-wrap">
-                <span class="text-danger" *ngIf="emptyNum">Telephone is required</span>
-                <span class="text-danger" *ngIf="!phoneValid ">Wrong number</span>
+                <span class="text-danger" *ngIf="phone.errors.required">Telephone is required</span>
+                <span class="text-danger" *ngIf="phone.errors.required && !phone?.validatePhoneNumber?.valid"> & </span>
+
+                <span class="text-danger" *ngIf="!phone?.validatePhoneNumber?.valid">Wrong number</span>
               </span>
             </span>
             <!-- end errors -->
@@ -114,7 +114,7 @@
 
 
           <div class="col-12 p-3 d-flex flex-column gap-1 my-3">
-            <button type="button" (click)="bookBtn()" [disabled]="es_form.invalid || isLoading || emptyNum || !phoneValid" style="height: 54px;" mat-raised-button class="w-100 font2 bg-blue3 px-5 py-3 rounded rounded-3 btn text-white">
+            <button type="button" (click)="bookBtn()" [disabled]="es_form.invalid || isLoading" style="height: 54px;" mat-raised-button class="w-100 font2 bg-blue3 px-5 py-3 rounded rounded-3 btn text-white">
               <div style="font-size: 20px;font-weight: 700;" class="d-flex align-items-center font2">
                 <div *ngIf="isLoading" class="spinner-border text-light mx-1" style="width: 21px;height: 21px;font-size: 10px;" role="status"></div>
                 Book

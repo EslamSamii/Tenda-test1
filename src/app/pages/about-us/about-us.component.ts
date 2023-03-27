@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./about-us.component.scss']
 })
 export class AboutUsComponent {
+  copyText= 'Copy'
   data:any;
   constructor(private api: ApiService) {
   }
@@ -19,5 +20,24 @@ export class AboutUsComponent {
     this.api.aboutUs().subscribe((res:any)=>{
       this.data = res.result[0]
     })
+  }
+  setCopy(tooltip:any){
+    this.copyText="Copied"
+    tooltip.show();
+  }
+  initCopy(){
+    this.copyText="Copy"
+  }
+  whatsappClick(){
+    window.open(
+      `https://wa.me/${this.data?.whatsapp_number}`,
+      '_blank'
+    );
+  }
+  sendEmail(){
+    window.open(
+      `mailto:${this.data?.email}`,
+      '_blank'
+    );
   }
 }
