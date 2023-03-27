@@ -10,6 +10,7 @@ import { environment as env } from '../../../environments/environment';
   styleUrls: ['./adventure-details.component.scss']
 })
 export class AdventureDetailsComponent {
+  copyText = 'Copy Link'
   selectedIMG:any = ''
   domain = env.domain.slice(0,env.domain.length-1)
   categories:any;
@@ -46,5 +47,12 @@ export class AdventureDetailsComponent {
   getCateg(id:any){
     let name = this.categories.filter((f:any) => f.id == id);
     this.categ = name[0]
+  }
+  setCopy(tooltip:any){
+    this.copyText="Copied"
+    tooltip.show();
+  }
+  initCopy(){
+    this.copyText="Copy Token"
   }
 }

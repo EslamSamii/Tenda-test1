@@ -25,9 +25,7 @@ export class TransportationComponent {
   CountryISO = CountryISO;
   PhoneNumberFormat = PhoneNumberFormat;
 
-  currentVal:any;
 
-  maxNum = 10;
   COUNTRY_DATA = CURRENCY
 
   emailRe = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,16}$/;
@@ -78,6 +76,15 @@ export class TransportationComponent {
       //form creation
       this.createForm();
     this.getZones()
+    this.fromPlace.valueChanges().subscribe((res:any)=>{
+      this.calcPrice()
+    })
+    this.toPlace.valueChanges().subscribe((res:any)=>{
+      this.calcPrice()
+    })
+  }
+  checkChangeDate(){
+    this.calcPrice()
   }
   getCategory(id:any){
     this.api.categories().subscribe((res:any)=>{
@@ -113,6 +120,7 @@ export class TransportationComponent {
   }
   // start form
   initFormControles(){
+    this.phone = new FormControl({},[Validators.required]);
     this.dateFrom = new FormControl('',[Validators.required]);
     this.persons = new FormControl('1',[Validators.required]);
     this.fromPlace = new FormControl('',[Validators.required]);
@@ -123,6 +131,7 @@ export class TransportationComponent {
   }
   createForm(){
     this.es_form = new FormGroup({
+      phone: this.phone,
       dateFrom: this.dateFrom,
       persons:this.persons,
       fromPlace:this.fromPlace,
@@ -153,7 +162,7 @@ export class TransportationComponent {
       client_email:this.email.value,
       client_first_name:this.fname.value,
       client_last_name:this.lname.value,
-      client_phone_number:this.phone.number,
+      client_phone_number:this.phone.value.e164Number,
       adventure:this.adventureData.id,
     }
     if(this.isReturn){
@@ -213,67 +222,4 @@ export class TransportationComponent {
       this.initFilters()
     });
   }
-  prevVal:any = '';
-  phoneValid =false;
-  emptyNum:any = true;
-  phoneTouched = false;
-  onChange2(){
-    setTimeout(() => {
-      let intNum:any = 0
-      if(this.phone && this.phone.number){
-        intNum=parseInt(this.phone.number.replace(/[- \\(\\)]*/g,''));
-        this.emptyNum = this.phone.number.replace(/[- \\(\\)]*/g,'').length;
-        this.emptyNum == 0 ? this.emptyNum = true: this.emptyNum = false;
-        this.phoneValid = this.numbersOnly.test(intNum);
-
-      }else{
-      this.emptyNum = true;
-
-      }
-
-      // libphonenumber
-      if(this.phone && this.phone.number && this.phone.number.replace(/[- \\(\\)+]*/g,'').length < 10){
-        this.phone.number = this.phone.number.slice(-10);
-        this.maxNum = 10;
-        return ;
-      }
-        if(this.phone?.number){
-          let mobileData = this.phone ? JSON.parse(JSON.stringify(this.phone)) : {}
-          if(this.currentVal == mobileData?.number.replace(/[- \\(\\)+]*/g,'')) {
-            this.maxNum = 10;
-            return
-          };
-          let num_ = mobileData.number.replace(/[- \\(\\)+]*/g,'');
-          let num = num_.slice(-10);
-          let phonePrefix = num_.replace(num,'')
-          this.currentVal = num;
-          let country:any = this.COUNTRY_DATA.filter((c:any)=>c['phone'] ==parseInt(phonePrefix))
-
-          // this.countryCode = country[0].code.toLowerCase();
-          if(country[0] && country[0].code){
-            this.phone ={
-                countryCode:country[0].code,
-                dialCode:'+'+phonePrefix,
-                e164Number:'+'+num_,
-                internationalNumber:'+'+phonePrefix+' '+num,
-                nationalNumber:num_,
-                number:num
-            }
-            intNum=parseInt(this.phone.number.replace(/[- \\(\\)+]*/g,''));
-            this.phoneValid = this.numbersOnly.test(intNum);
-            this.maxNum = 10;
-          }
-          this.maxNum = 10;
-
-      }
-
-    }, 5);
-
-  }
-  onChange0(){
-    setTimeout(() => {
-      this.phoneTouched = true
-      this.maxNum = 100;
-      },5)
-    }
 }
