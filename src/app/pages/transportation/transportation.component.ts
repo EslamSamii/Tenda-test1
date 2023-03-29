@@ -208,10 +208,12 @@ export class TransportationComponent {
   onChange(e:any){
     if(e.target.checked){
       this.isReturn = true;
+      this.calcPrice()
     }
     else {
       this.isReturn = false;
       this.dateTo = ''
+      this.calcPrice()
     }
   }
   getZones(){
