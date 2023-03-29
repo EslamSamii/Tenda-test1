@@ -1,3 +1,3 @@
 export const environment = {
-  domain:"https://walrus-app-njllh.ondigitalocean.app/"
+  domain:"https://tendatours-5ic8u.ondigitalocean.app/"
 };
