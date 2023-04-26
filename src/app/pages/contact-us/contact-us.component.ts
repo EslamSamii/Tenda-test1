@@ -48,11 +48,6 @@ export class ContactUsComponent {
     this.initFormControles()
     //form creation
     this.createForm();
-    this.phone.valueChanges.subscribe((res:any) => {
-      console.log(res)
-      console.log(this.phone)
-    });
-
   }
   // start form
   initFormControles(){

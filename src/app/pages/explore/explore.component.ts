@@ -33,7 +33,7 @@ export class ExploreComponent {
 
     }
     this.activatedRounte.queryParams.subscribe((params:any)=>{
-      if(params.d && params.d == 'transportation')
+      if(params.d && params.d.toLowerCase() == 'transportation')
         this.transportation = true;
       else
         this.transportation = false;

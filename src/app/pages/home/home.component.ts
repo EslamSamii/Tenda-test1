@@ -31,9 +31,6 @@ export class HomeComponent {
     this.getSlider();
     this.getCategories()
 
-    this.timer$ = setInterval(()=>{
-      this.next(true)
-    },6000)
 
   }
   ScrollLeft(element:any,num=450){
