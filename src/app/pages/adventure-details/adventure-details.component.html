@@ -41,31 +41,31 @@
 
   <div class="row rounded-4 overflow-hidden mt-5 gap-3 gap-lg-0">
     <div class="col-12 col-lg-6 ps-0 pe-1" style="max-height: 380px;height: 380px;">
-      <div class="w-100 h-100  overflow-hidden"  data-bs-toggle="modal" data-bs-target="#seePhoto" (click)="selectedIMG=adventureData?.image">
+      <div class="w-100 h-100  overflow-hidden"   attr.data-bs-toggle="{{adventureData?.image ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.image ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.image">
         <img class="hvr-grow" src="{{adventureData?.image ? adventureData?.image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
       </div>
     </div>
     <div class="col-12 col-lg-6 row p-0 m-0 " style="max-height: 380px;height: 380px;">
         <div class="col-6 p-1 pt-0" style="max-height: 192px;height: 192px;">
-          <div class="w-100 h-100  overflow-hidden"  data-bs-toggle="modal" data-bs-target="#seePhoto" (click)="selectedIMG=adventureData?.images[0]?.image">
+          <div class="w-100 h-100  overflow-hidden"   attr.data-bs-toggle="{{adventureData?.images[0] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[0] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[0]?.image">
             <img class="hvr-grow" src="{{adventureData?.images[0] ? adventureData.images[0].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
         </div>
         <div class="col-6 p-1 pt-0 pe-0" style="max-height: 192px;height: 192px;">
-          <div class="w-100 h-100  overflow-hidden"  data-bs-toggle="modal" data-bs-target="#seePhoto" (click)="selectedIMG=adventureData?.images[1]?.image">
+          <div class="w-100 h-100  overflow-hidden"  attr.data-bs-toggle="{{adventureData?.images[1] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[1] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[1]?.image">
             <img class="hvr-grow" src="{{adventureData?.images[1] ? adventureData.images[1].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
         </div>
         <div class="col-6 p-1" style="max-height: 192px;height: 192px;">
-          <div class="w-100 h-100  overflow-hidden"   data-bs-toggle="modal" data-bs-target="#seePhoto" (click)="selectedIMG=adventureData?.images[2]?.image">
+          <div class="w-100 h-100  overflow-hidden"    attr.data-bs-toggle="{{adventureData?.images[2] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[2] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[2]?.image">
             <img class="hvr-grow" src="{{adventureData?.images[2] ? adventureData.images[2].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
         </div>
         <div class=" position-relative col-6 p-1 pe-0" style="max-height: 192px;height: 192px;">
-          <div class="h-100 w-100 overflow-hidden" *ngIf="adventureData?.images.length<=4"  data-bs-toggle="modal" data-bs-target="#seePhoto" (click)="selectedIMG=adventureData?.images[3]?.image">
+          <div class="h-100 w-100 overflow-hidden" *ngIf="adventureData?.images.length<=4"  attr.data-bs-toggle="{{adventureData?.images[3] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[3] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[3]?.image">
             <img class="hvr-grow" src="{{adventureData?.images[3] ? adventureData.images[3].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
-          <div *ngIf="adventureData?.images.length>4"  class="overlay-seemore w-100 h-100 overflow-hidden" data-bs-toggle="modal" data-bs-target="#seeMorePhotos">
+          <div *ngIf="adventureData?.images.length>4"  class="overlay-seemore w-100 h-100 overflow-hidden"   attr.data-bs-toggle="{{adventureData?.images[3] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[3] ? '#seeMorePhotos' : '' }}">
             <img src="{{adventureData?.images[3] ? adventureData.images[3].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
         </div>
@@ -89,7 +89,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="c-blue2 bi bi-calendar2-week-fill" viewBox="0 0 16 16">
           <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zm9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5zM8.5 7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM3 10.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/>
         </svg>
-        {{adventureData?.date}}
+        <span class="font2" [innerHtml]="adventureData?.date | dateFIx"></span>
       </div>
     </div>
     <div class="d-flex gap-3 w-100 d-lg-none flex-column flex-lg-row">
@@ -110,7 +110,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="c-blue2 bi bi-calendar2-week-fill" viewBox="0 0 16 16">
           <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zm9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5zM8.5 7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM3 10.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/>
         </svg>
-        {{adventureData?.date}}
+        <span class="font2" [innerHtml]="adventureData?.date | dateFIx"></span>
       </div>
     </div>
     <button [routerLink]="['/adventure/'+ adventureData?.id +'/book']" style="width: fit-content;height: 54px;" mat-raised-button class="font2 bg-blue3 px-5 py-1 rounded rounded-3 d-none d-lg-block btn text-white">

@@ -36,7 +36,7 @@
     <ng-container *ngIf="transportation && !isAll">
       <app-transportation [CategId]="item?.id"></app-transportation>
     </ng-container>
-
+    <!-- start card -->
     <div *ngIf="!transportation" class="col-12 col-md-6 col-lg-4 p-2  fadeInUp animated">
       <div class=" rounded rounded-4 d-flex flex-column overflow-hidden h-100" style="background-color: #FFFDF3;">
         <div class="overflow-hidden position-relative w-100" style="height: 380px;">
@@ -44,36 +44,38 @@
         </div>
         <div class="p-3 d-flex flex-column justify-content-between" style="min-height: 280px;">
           <div>
-              <h3 class="m-0 font1" style="font-weight: 600; font-size: 24px;">{{item?.title}}</h3>
+              <h3 class="m-0 font1" style="font-weight: 600; font-size: 23px;">{{item?.title}}</h3>
             <div class="d-flex justify-content-between align-items-center my-3">
-              <div class="d-flex c-blue1 font2 align-items-center" style="font-size: 20px;font-weight: 700;">
+              <div class="d-flex c-blue1 font2 align-items-center gap-1" style="font-size: 18px;font-weight: 700;">
                 <!-- <img class="me-1" style="object-fit: cover;width: 13px" src="assets/images/categ1.svg" alt=""> -->
-                <mat-icon style="width: 26px;height: 26px;font-size: 26px;" class="c-blue1 mx-2 material-symbols-outlined">{{getCateg(item.category_id)?.icon}}</mat-icon>
+                <mat-icon style="width: 22px;height: 22px;font-size: 22px;" class="c-blue1 material-symbols-outlined">{{getCateg(item.category_id)?.icon}}</mat-icon>
 
                 {{getCateg(item.category_id)?.title}}
               </div>
-              <p class="m-0 c-blue3 font2" style="font-size: 20px">{{item?.date}}</p>
+              <p class="m-0 c-blue3 font2" style="font-size: 16px" [innerHtml]="item?.date | dateFIx"></p>
               <!-- <p class="m-0 c-blue3" style="font-size: 20px"> 15 <span class="mx-1" style="color: #767E86;">to</span> 8 6</p> -->
 
             </div>
-            <p class="font2 my-4 line-overflow-4" style="font-size: 17px;line-height: normal;">{{item?.description}}</p>
+            <p class="font2 my-4 line-overflow-4" style="font-size: 16px;line-height: normal;">{{item?.description}}</p>
           </div>
 
-          <div class="d-flex justify-content-between">
+          <div class="d-flex justify-content-between  align-items-center">
             <div class="d-flex flex-column">
-              <span class="font2" style="color: #767E86; font-size: 14px;font-weight: 400;">Price Per Person</span>
+              <span class="font2" style="color: #767E86; font-size: 13px;font-weight: 400;">Price Per Person</span>
               <div class="d-flex flex-row justify-content-center  align-items-center">
                 <span class="c-blue2 font2 px-2" style="margin-top: 3px; font-size: 36px;font-weight: 700;">€</span>
-                <span class="c-blue2 font2" style="font-size: 42px;font-weight: 700;line-height: 42px;">{{item?.price | number: '1.0-0'}}</span>
+                <span class="c-blue2 font2" style="font-size: 40px;font-weight: 700;line-height: 42px;">{{item?.price | number: '1.0-0'}}</span>
               </div>
             </div>
             <button [routerLink]="['/adventure/'+ item?.id +'/book']" style="width: fit-content;height: 54px;" mat-raised-button class="font2 bg-blue3 px-3 py-1 rounded rounded-3 btn text-white">
-              <span class="font2" style="font-size: 18px;font-weight: 700;">Book Now</span>
+              <span class="font2" style="font-size: 15px;font-weight: 700;">Book Now</span>
             </button>
           </div>
         </div>
       </div>
     </div>
+    <!-- end card -->
+
     <!-- end loop -->
     </ng-container>
 

@@ -7,30 +7,30 @@
           <img class="hvr-grow w-100 h-100" [routerLink]="['/adventure/'+ adventureData?.id]" src="{{adventureData?.image}}" style="cursor: pointer; object-fit: cover;">
         </div>
         <div class="p-3">
-          <h3 class="m-0 mt-3 font1" style="font-weight: 600; font-size: 24px;">{{adventureData?.title}}</h3>
+          <h3 class="m-0 mt-3 font1" style="font-weight: 600; font-size: 23px;">{{adventureData?.title}}</h3>
           <div class="d-flex justify-content-between align-items-center my-3">
-            <div class="d-flex c-blue1 font2 align-items-center" style="font-size: 20px;font-weight: 700;">
-            <mat-icon style="width: 26px;height: 26px;font-size: 26px;" class="c-blue1 mx-2 material-symbols-outlined">{{getCateg(adventureData?.category_id)?.icon}}</mat-icon>
+            <div class="d-flex c-blue1 font2 align-items-center gap-1" style="font-size: 18px;font-weight: 700;">
+            <mat-icon style="width: 22px;height: 22px;font-size: 22px;" class="c-blue1 material-symbols-outlined">{{getCateg(adventureData?.category_id)?.icon}}</mat-icon>
 
               <!-- <img class="me-1" style="object-fit: cover;width: 13px" src="assets/images/categ1.svg" alt=""> -->
 
               {{getCateg(adventureData?.category_id)?.title}}
             </div>
-            <p class="m-0 c-blue3 font2" style="font-size: 20px">{{adventureData?.date}}</p>
+            <p class="m-0 c-blue3 font2" style="font-size: 16px" [innerHtml]="adventureData?.date | dateFIx"></p>
             <!-- <p class="m-0 c-blue3" style="font-size: 20px"> 15 <span class="mx-1" style="color: #767E86;">to</span> 8 6</p> -->
 
           </div>
-          <p class="font2 my-4 line-overflow-4" style="font-size: 17px;line-height: normal;">{{adventureData?.description}}</p>
+          <p class="font2 my-4 line-overflow-4" style="font-size: 16px;line-height: normal;">{{adventureData?.description}}</p>
 
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex flex-column">
-              <span class="font2" style="color: #767E86; font-size: 14px;font-weight: 400;">Price Per Person</span>
+              <span class="font2" style="color: #767E86; font-size: 13px;font-weight: 400;">Price Per Person</span>
               <div class="d-flex flex-row justify-content-center  align-items-center">
                 <span class="c-blue2 font2 px-2" style="margin-top: 3px; font-size: 36px;font-weight: 700;">€</span>
-                <span class="c-blue2 font2" style="font-size: 42px;font-weight: 700;line-height: 42px;">{{adventureData?.price | number: '1.0-0'}}</span>
+                <span class="c-blue2 font2" style="font-size: 40px;font-weight: 700;line-height: 42px;">{{adventureData?.price | number: '1.0-0'}}</span>
               </div>
             </div>
-            <span class="font2" style="font-size: 18px;font-weight: 700;">Booking Now</span>
+            <span class="font2" style="font-size: 15px;font-weight: 700;">Booking Now</span>
           </div>
         </div>
       </div>
@@ -129,10 +129,10 @@
 
 
     <div *ngIf="isSuccess" class="animate__animated animate__fadeInDown col-12 col-lg-8 p-2 my-2 d-flex flex-column justify-content-center align-items-center">
-      <svg style="color: #fff;padding: 5px;" xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor" class="bi bi-check-lg bg-success rounded-circle " viewBox="0 0 16 16">
+      <svg style="color: #fff;padding: 5px;" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-check-lg bg-success rounded-circle " viewBox="0 0 16 16">
         <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
       </svg>
-      <h2 class="font1 my-5" style="font-weight: 700; font-size: 52px;">Congratulations!</h2>
+      <h2 class="font1 my-5" style="font-weight: 700; font-size: 45px;">Congratulations!</h2>
       <p class="font2" style="color: #828282;font-size: 16px;">Your request has been registered successfully</p>
       <button [routerLink]="['/explore']" type="button" style="height: 54px;" mat-raised-button class="w-100 my-5 bg-blue3 px-5 py-3 rounded rounded-3 btn text-white">
         <span class="font2" style="font-size: 18px;font-weight: 700;">Explore more adventures</span>
@@ -146,28 +146,28 @@
           <img class="hvr-grow w-100 h-100" [routerLink]="['/adventure/'+ adventureData?.id]" src="{{adventureData?.image}}" style="cursor: pointer; object-fit: cover;">
         </div>
         <div class="p-3">
-          <h3 class="m-0 mt-3 font1" style="font-weight: 600; font-size: 24px;">{{adventureData?.title}}</h3>
+          <h3 class="m-0 mt-3 font1" style="font-weight: 600; font-size: 23px;">{{adventureData?.title}}</h3>
           <div class="d-flex justify-content-between align-items-center my-3">
-            <div class="d-flex c-blue1 font2 align-items-center" style="font-size: 20px;font-weight: 700;">
+            <div class="d-flex c-blue1 font2 align-items-center gap-1" style="font-size: 18px;font-weight: 700;">
               <!-- <img class="me-1" style="object-fit: cover;width: 13px" src="assets/images/categ1.svg" alt=""> -->
-              <mat-icon style="width: 26px;height: 26px;font-size: 26px;" class="c-blue1 mx-2 material-symbols-outlined">{{getCateg(adventureData?.category_id)?.icon}}</mat-icon>
+              <mat-icon style="width: 22px;height: 22px;font-size: 22px;" class="c-blue1 material-symbols-outlined">{{getCateg(adventureData?.category_id)?.icon}}</mat-icon>
 
               {{getCateg(adventureData?.category_id)?.title}}
             </div>
-            <p class="m-0 c-blue3 font2" style="font-size: 17px;line-height: normal;">{{adventureData?.date}}</p>
+            <p class="m-0 c-blue3 font2" style="font-size: 16px;line-height: normal;" [innerHtml]="adventureData?.date | dateFIx"></p>
             <!-- <p class="m-0 c-blue3" style="font-size: 20px"> 15 <span class="mx-1" style="color: #767E86;">to</span> 8 6</p> -->
 
           </div>
-          <p class="font2 my-4 line-overflow-4" style="font-size: 18px;">{{adventureData?.description}}</p>
+          <p class="font2 my-4 line-overflow-4" style="font-size: 16px;line-height: normal;">{{adventureData?.description}}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex flex-column">
-              <span class="font2" style="color: #767E86; font-size: 14px;font-weight: 400;">Price Per Person</span>
+              <span class="font2" style="color: #767E86; font-size: 13px;font-weight: 400;">Price Per Person</span>
               <div class="d-flex flex-row justify-content-center  align-items-center">
                 <span class="c-blue2 font2 px-2" style="margin-top: 3px; font-size: 36px;font-weight: 700;">€</span>
-                <span class="c-blue2 font2" style="font-size: 42px;font-weight: 700;line-height: 42px;">{{adventureData?.price | number: '1.0-0'}}</span>
+                <span class="c-blue2 font2" style="font-size: 40px;font-weight: 700;line-height: 42px;">{{adventureData?.price | number: '1.0-0'}}</span>
               </div>
             </div>
-            <span class="font2" style="font-size: 18px;font-weight: 700;">Booking Now</span>
+            <span class="font2" style="font-size: 15px;font-weight: 700;">Booking Now</span>
           </div>
         </div>
       </div>

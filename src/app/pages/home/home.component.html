@@ -1,78 +1,45 @@
 
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade position-relative mb-5" data-bs-ride="carousel">
 
-<div class="es-carousel" style="height: 100vh; margin-bottom: 70px;">
-  <div class="position-relative w-100 h-100">
-    <ng-container *ngFor="let item of sliders">
-      <div [ngClass]="{'close': close==item.id}" class="ca1  w-100 position-absolute" [style]="'height:100vh;z-index:'+z_order[item.id]">
-        <section class="header d-none d-lg-block" [style]="'background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url('+item.image+') center;'">
-          <div class="container-lg">
-            <div class="row w-100" style="height: 100vh;">
-              <div class="col-12 col-lg-8 d-flex flex-column justify-content-center align-items-center align-items-lg-start gap-3">
-                <p style="font-size: 55px;line-height: 85.31px; " class="c-white" [innerHtml]="item.title | logoInText"></p>
-                  <span class="font2 c-white mt-5 mb-3" style="font-size: 18px;line-height: 27.24px;" [innerHtml]="item.subtitle | logoInText"></span>
-                  <button style="height: 54px;width: fit-content;" mat-raised-button class="font2 bg-blue3 px-5 py-3 rounded rounded-3 btn text-white">
-                    <span [routerLink]="['/explore']" class="font2" style="font-size: 18px;font-weight: 700;">
-                      Explore Now
-                    </span>
-                  </button>
-              </div>
+
+  <div class="carousel-indicators ca-controles  mx-0 mt-0 mb-3 mb-lg-0 me-lg-5" style="width: 50px;height: 100%;z-index: 3;">
+    <ng-container *ngFor="let item of sliders;let i= index;">
+      <button mat-icon-button class="d-flex justify-content-center align-items-center btn-toggler" type="button" data-bs-target="#carouselExampleIndicators" attr.data-bs-slide-to="{{i}}" attr.aria-label="Slide {{i+1}}" class="{{i==0 ? 'active' : ''}}" attr.aria-current="{{i==0 ? 'true' : ''}}">
+        <span class="text rounded rounded-circle bg-white" style="width: 15px;height: 15px;cursor: pointer;"></span>
+      </button>
+    </ng-container>
+    <button data-bs-target="#carouselExampleIndicators" data-bs-slide="prev"  mat-icon-button style="width: 40px;height: 40px; text-indent: inherit;opacity: 1;" class="d-none d-sm-block carousel-control-prev position-relative d-flex justify-content-center align-items-center">
+      <mat-icon class="text-white position-absolute top-50 start-50 translate-middle" style="cursor: pointer;width: 25px;height: 25px;font-size: 25px;">expand_less</mat-icon>
+    </button>
+    <button data-bs-target="#carouselExampleIndicators" data-bs-slide="next" mat-icon-button  style="width: 40px;height: 40px; text-indent: inherit;opacity: 1;" class="d-none d-sm-block carousel-control-next d-flex justify-content-center align-items-center">
+      <mat-icon class="text-white position-absolute top-50 start-50 translate-middle" style="cursor: pointer;width: 25px;height: 25px;font-size: 25px;">keyboard_arrow_down</mat-icon>
+    </button>
+  </div>
+
+
+  <div class="carousel-inner">
+
+    <ng-container *ngFor="let item of sliders;let i= index;">
+      <div  data-bs-interval="6000" class=" img-overlay carousel-item vh-100 position-relative {{i == 0 ? 'active' : ''}}" >
+        <img style="object-fit: cover;z-index: -1;" src="{{item?.image}}" class=" d-block w-100 h-100 position-absolute" alt="...">
+
+        <div class="container-lg position-relative" style="z-index: 1;">
+          <div class="row w-100" style="height: 100vh;">
+            <div class="col-12 col-lg-8 d-flex flex-column justify-content-center align-items-center align-items-lg-start gap-3">
+              <p style="font-size: 55px;line-height: 85.31px; " class="c-white" [innerHtml]="item?.title | logoInText"></p>
+              <span class="font2 c-white mt-5 mb-3" style="font-size: 18px;line-height: 27.24px;" [innerHtml]="item?.subtitle | logoInText"></span>
+              <button style="height: 54px;width: fit-content;" mat-raised-button class="font2 bg-blue3 px-5 py-3 rounded rounded-3 btn text-white">
+                <span [routerLink]="['/explore']" class="font2" style="font-size: 18px;font-weight: 700;">
+                  Explore Now
+                </span>
+              </button>
             </div>
           </div>
-        </section>
-
-        <section class="header d-block d-lg-none" [style]="'background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url('+item.image+') center;'">
-          <div class="container-lg">
-            <div class="row w-100" style="height: 100vh;">
-              <div class="col-12 col-lg-8 d-flex flex-column justify-content-center align-items-center align-items-lg-start gap-3">
-                  <p style="font-size: 35px;line-height: 60px; " class="tenda-text c-white text-center"  [innerHtml]="item.title | logoInText"></p>
-                  <span class="font2 c-white mb-3 mt-2  text-center" style="font-size: 18px;line-height: 27.24px;" [innerHtml]="item.subtitle | logoInText"></span>
-                  <button style="height: 54px;width: fit-content;" mat-raised-button class="font2 bg-blue3 px-5 py-3 rounded rounded-3 btn text-white">
-                    <span [routerLink]="['/explore']" class="font2" style="font-size: 18px;font-weight: 700;">
-                      Explore Now
-                    </span>
-                  </button>
-              </div>
-            </div>
-          </div>
-        </section>
+        </div>
       </div>
     </ng-container>
 
 
-
-
-    <div class="d-none d-lg-flex ca-controles position-absolute end-0 me-5 bottom-50 top-50 translate-middle-y justify-content-center align-items-center flex-column" style="width: 50px;height: 100%;z-index: 3;">
-      <ng-container *ngFor="let item of sliders">
-        <button (click)="next(item.id)" mat-icon-button class="d-flex justify-content-center align-items-center">
-
-          <span (click)="next(item.id)" class="text rounded rounded-circle bg-white" [ngClass]="{'bg-orange': selectedSlider == item.id}" style="width: 15px;height: 15px;cursor: pointer;"></span>
-        </button>
-      </ng-container>
-      <button (click)="next(false)" mat-icon-button class="d-flex justify-content-center align-items-center">
-
-      <mat-icon class="text-white" style="cursor: pointer;width: 30px;height: 30px;font-size: 30px;">expand_less</mat-icon>
-      </button>
-      <button (click)="next(true)" mat-icon-button class="d-flex justify-content-center align-items-center">
-
-          <mat-icon class="text-white" style="cursor: pointer;width: 30px;height: 30px;font-size: 30px;">keyboard_arrow_down</mat-icon>
-      </button>
-    </div>
-
-    <div class="ca-controles position-absolute end-50 start-50 mb-5 bottom-0 translate-middle-x justify-content-center align-items-center d-flex d-lg-none flex-row " style="width: 100%; height: 30px;z-index: 3;">
-      <ng-container *ngFor="let item of sliders">
-        <button (click)="next(item.id)" mat-icon-button class="d-flex justify-content-center align-items-center">
-
-        <span  class="text rounded rounded-circle bg-white" [ngClass]="{'bg-orange': selectedSlider == item.id}" style="width: 15px;height: 15px;cursor: pointer;"></span>
-          </button>
-      </ng-container>
-      <button (click)="next(false)" mat-icon-button class="d-flex justify-content-center align-items-center">
-        <mat-icon class="text-white" style="cursor: pointer;width: 30px;height: 30px;font-size: 30px;">navigate_before</mat-icon>
-      </button>
-
-      <button (click)="next(true)" mat-icon-button class="d-flex justify-content-center align-items-center">
-        <mat-icon  class="text-white" style="cursor: pointer;width: 30px;height:30px;font-size: 30px;">navigate_next</mat-icon>
-        </button>
-    </div>
   </div>
 </div>
 
@@ -98,10 +65,9 @@
     </div>
   </div>
 
-
+<!-- start card -->
   <div #wrapper class="overflow-hidden w-100">
     <div class="row d-flex flex-row flex-nowrap" style="margin-top: 70px;" >
-
       <ng-container *ngFor="let item of adventuresData?.result ?adventuresData.result : []">
         <div *ngIf="item.title != 'transport'" class="col-12 col-md-6 col-lg-4 p-2 fadeInUp animated">
           <div class=" rounded rounded-4 d-flex flex-column overflow-hidden h-100" style="background-color: #FFFDF3;">
@@ -110,31 +76,31 @@
             </div>
             <div class="p-3 d-flex flex-column justify-content-between" style="min-height: 280px;">
               <div>
-                <h3 class="m-0 font1" style="font-weight: 600; font-size: 24px;">{{item?.title}}</h3>
+                <h3 class="m-0 font1" style="font-weight: 600; font-size: 23px;">{{item?.title}}</h3>
 
                 <div class="d-flex justify-content-between align-items-center my-3">
-                  <div class="d-flex c-blue1 font2 align-items-center" style="font-size: 20px;font-weight: 700;">
+                  <div class="d-flex c-blue1 font2 align-items-center  gap-1" style="font-size: 18px;font-weight: 700;">
                     <!-- <img class="me-1" style="object-fit: cover;width: 13px" src="assets/images/categ1.svg" alt=""> -->
-                    <mat-icon style="width: 26px;height: 26px;font-size: 26px;" class="c-blue1 mx-2 material-symbols-outlined">{{getCateg(item.category_id)?.icon}}</mat-icon>
+                    <mat-icon style="width: 22px;height: 22px;font-size: 22px;" class="c-blue1 material-symbols-outlined">{{getCateg(item.category_id)?.icon}}</mat-icon>
 
                     {{getCateg(item.category_id)?.title}}
                   </div>
-                  <p class="m-0 c-blue3 font2" style="font-size: 20px">{{item?.date}}</p>
+                  <p class="m-0 c-blue3 font2" style="font-size: 16px"  [innerHtml]="item?.date | dateFIx"></p>
                   <!-- <p class="m-0 c-blue3" style="font-size: 20px"> 15 <span class="mx-1" style="color: #767E86;">to</span> 8 6</p> -->
 
                 </div>
-                <p class="font2 my-4  line-overflow-4" style="font-size: 17px;line-height: normal;">{{item?.description}}</p>
+                <p class="font2 my-4  line-overflow-4" style="font-size: 16px;line-height: normal;">{{item?.description}}</p>
               </div>
-              <div class="d-flex justify-content-between">
+              <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex flex-column">
-                  <span class="font2" style="color: #767E86; font-size: 14px;font-weight: 400;">Price Per Person</span>
-                  <div class="d-flex flex-row justify-content-center  align-items-center">
-                    <span class="c-blue2 font2 px-2" style="margin-top: 3px; font-size: 36px;font-weight: 700;">€</span>
-                    <span class="c-blue2 font2" style="font-size: 42px;font-weight: 700;line-height: 42px;">{{item?.price | number: '1.0-0'}}</span>
+                  <span class="font2" style="color: #767E86; font-size: 13px;font-weight: 400;">Price Per Person</span>
+                  <div class="d-flex flex-row justify-content-center gap-1 align-items-center">
+                    <span class="c-blue2 font2" style="margin-top: 3px; font-size: 36px;font-weight: 700;">€</span>
+                    <span class="c-blue2 font2" style="font-size: 40px;font-weight: 700;line-height: 42px;">{{item?.price | number: '1.0-0'}}</span>
                   </div>
                 </div>
                 <button [routerLink]="['/adventure/'+ item?.id +'/book']" style="width: fit-content;height: 54px;" mat-raised-button class="font2 bg-blue3 px-3 py-1 rounded rounded-3 btn text-white">
-                  <span class="font2" style="font-size: 18px;font-weight: 700;">Book Now</span>
+                  <span class="font2" style="font-size: 15px;font-weight: 700;">Book Now</span>
                 </button>
               </div>
             </div>
@@ -144,6 +110,8 @@
 
     </div>
   </div>
+<!-- end card -->
+
   <div class="d-flex d-lg-none flex-column gap-3 my-5">
     <button [routerLink]="['/explore']" style="width: fit-content;height: 54px;" mat-raised-button class="w-100 bg-blue3 px-3 py-1 rounded rounded-3 btn text-white">
       <span class="font2" style="width: fit-content;font-size: 18px;font-weight: 700;">SEE ALL</span>

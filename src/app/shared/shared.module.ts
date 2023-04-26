@@ -7,12 +7,15 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { LogoInTextPipe } from './logo-in-text.pipe';
+import { DateFIxPipe } from './dateFIx.pipe';
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    LogoInTextPipe
-  ],
+    LogoInTextPipe,
+      DateFIxPipe,
+
+   ],
   imports: [
     CommonModule,
     RouterModule,
@@ -23,7 +26,8 @@ import { LogoInTextPipe } from './logo-in-text.pipe';
   exports:[
     HeaderComponent,
     FooterComponent,
-    LogoInTextPipe
+    LogoInTextPipe,
+    DateFIxPipe
   ]
 })
 export class SharedModule { }
