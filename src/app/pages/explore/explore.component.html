@@ -39,8 +39,8 @@
     <!-- start card -->
     <div *ngIf="!transportation" class="col-12 col-md-6 col-lg-4 p-2  fadeInUp animated">
       <div class=" rounded rounded-4 d-flex flex-column overflow-hidden h-100" style="background-color: #FFFDF3;">
-        <div class="overflow-hidden position-relative w-100" style="height: 380px;">
-          <img class="hvr-grow w-100 h-100" [routerLink]="['/adventure/'+ item?.id]" src="{{item?.image}}" style="cursor: pointer; object-fit: cover;">
+        <div class="overflow-hidden position-relative w-100 view-img-con" [routerLink]="['/adventure/'+ item?.id]" style="height: 380px;">
+          <img class="hvr-grow w-100 h-100"  src="{{item?.image}}" style="cursor: pointer; object-fit: cover;">
         </div>
         <div class="p-3 d-flex flex-column justify-content-between" style="min-height: 280px;">
           <div>

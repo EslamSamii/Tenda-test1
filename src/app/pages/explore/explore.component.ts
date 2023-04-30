@@ -62,7 +62,7 @@ export class ExploreComponent {
   adventures(id:any){
     this.api.adventuresList(id).subscribe((res:any)=>{
         if(id === ''){
-        let categTrans = this.categories.filter((categ:any)=> categ.title == 'transportation')[0];
+        let categTrans = this.categories.filter((categ:any)=> categ.title.toLowerCase() == 'transportation')[0];
         this.adventuresData = res
         this.adventuresData.result = this.adventuresData.result.filter((r:any)=>r.category_id != categTrans.id);
       }else{

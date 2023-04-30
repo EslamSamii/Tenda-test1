@@ -26,8 +26,8 @@
         <div class="container-lg position-relative" style="z-index: 1;">
           <div class="row w-100" style="height: 100vh;">
             <div class="col-12 col-lg-8 d-flex flex-column justify-content-center align-items-center align-items-lg-start gap-3">
-              <p style="font-size: 55px;line-height: 85.31px; " class="c-white" [innerHtml]="item?.title | logoInText"></p>
-              <span class="font2 c-white mt-5 mb-3" style="font-size: 18px;line-height: 27.24px;" [innerHtml]="item?.subtitle | logoInText"></span>
+              <p style="font-size: 70px;line-height: 85px; " class="main-title c-white p-0" [innerHtml]="item?.title | logoInText"></p>
+              <span class="font2 c-white mb-4 sub-title-header" style="font-size: 18px;line-height: 27px;" [innerHtml]="item?.subtitle | logoInText"></span>
               <button style="height: 54px;width: fit-content;" mat-raised-button class="font2 bg-blue3 px-5 py-3 rounded rounded-3 btn text-white">
                 <span [routerLink]="['/explore']" class="font2" style="font-size: 18px;font-weight: 700;">
                   Explore Now
@@ -45,9 +45,9 @@
 
 <section class="container-lg d-flex flex-column">
   <div class="d-flex justify-content-between">
-    <div class="d-flex flex-column gap-2">
-      <h1 class="header-sec font1" style="font-size: 54px;line-height: 71.98px;">Popular Adventure</h1>
-      <p class="my-3 font2" style="color:#767E86;font-size: 24px;line-height: 27.24px;">Most popular trips in Egypt, from historical places to natural wonders.</p>
+    <div class="d-flex flex-column gap-2 align-items-center  align-items-md-start" style="width: 100%;">
+      <h1 class="header-sec font1 header1 text-center text-temp" style="font-size: 45px;line-height: 40px;">Popular Adventure</h1>
+      <p class="my-2 font2 text-center" style="color:#767E86;font-size: 22px;line-height: 27px;">Most popular trips in Egypt, from historical places to natural wonders.</p>
     </div>
     <div class="d-none d-lg-flex flex-column gap-3">
       <button [routerLink]="['/explore']" style="width: fit-content;height: 54px;" mat-raised-button class="w-100 bg-blue3 px-3 py-1 rounded rounded-3 btn text-white">
@@ -67,12 +67,12 @@
 
 <!-- start card -->
   <div #wrapper class="overflow-hidden w-100">
-    <div class="row d-flex flex-row flex-nowrap" style="margin-top: 70px;" >
+    <div class="row d-none d-lg-flex flex-row flex-nowrap" style="margin-top: 40px;" >
       <ng-container *ngFor="let item of adventuresData?.result ?adventuresData.result : []">
         <div *ngIf="item.title != 'transport'" class="col-12 col-md-6 col-lg-4 p-2 fadeInUp animated">
           <div class=" rounded rounded-4 d-flex flex-column overflow-hidden h-100" style="background-color: #FFFDF3;">
-            <div class="overflow-hidden position-relative w-100" style="height: 380px;">
-              <img class="hvr-grow w-100 h-100" [routerLink]="['/adventure/'+ item?.id]" src="{{item?.image}}" style="cursor: pointer; object-fit: cover;">
+            <div class="overflow-hidden position-relative w-100 view-img-con" [routerLink]="['/adventure/'+ item?.id]" style="height: 380px;">
+              <img class="hvr-grow w-100 h-100"  src="{{item?.image}}" style="cursor: pointer; object-fit: cover;">
             </div>
             <div class="p-3 d-flex flex-column justify-content-between" style="min-height: 280px;">
               <div>
@@ -112,24 +112,69 @@
   </div>
 <!-- end card -->
 
+<div class="d-flex d-lg-none flex-column">
+  <div id="carouselExample3" class="carousel slide" style="width: 100%;margin-top: 70px" >
+    <div class="carousel-inner row">
+      <ng-container *ngFor="let item of adventuresData?.result ?adventuresData.result : [];let i = index;">
+        <div *ngIf="item.title != 'transport'" class="col-12 col-md-6 p-2 carousel-item" [ngClass]="{'active': i==0}">
+          <div class=" rounded rounded-4 d-flex flex-column overflow-hidden h-100" style="background-color: #FFFDF3;">
+            <div class="overflow-hidden position-relative w-100 view-img-con" [routerLink]="['/adventure/'+ item?.id]" style="height: 380px;">
+              <img class=" w-100 h-100 view-img"  src="{{item?.image}}" style="cursor: pointer; object-fit: cover;">
+            </div>
+            <div class="p-3 d-flex flex-column justify-content-between" style="min-height: 280px;">
+              <div>
+                <h3 class="m-0 font1" style="font-weight: 600; font-size: 23px;">{{item?.title}}</h3>
+
+                <div class="d-flex justify-content-between align-items-center my-3">
+                  <div class="d-flex c-blue1 font2 align-items-center  gap-1" style="font-size: 18px;font-weight: 700;">
+                    <!-- <img class="me-1" style="object-fit: cover;width: 13px" src="assets/images/categ1.svg" alt=""> -->
+                    <mat-icon style="width: 22px;height: 22px;font-size: 22px;" class="c-blue1 material-symbols-outlined">{{getCateg(item.category_id)?.icon}}</mat-icon>
+
+                    {{getCateg(item.category_id)?.title}}
+                  </div>
+                  <p class="m-0 c-blue3 font2" style="font-size: 16px"  [innerHtml]="item?.date | dateFIx"></p>
+                  <!-- <p class="m-0 c-blue3" style="font-size: 20px"> 15 <span class="mx-1" style="color: #767E86;">to</span> 8 6</p> -->
+
+                </div>
+                <p class="font2 my-4  line-overflow-4" style="font-size: 16px;line-height: normal;">{{item?.description}}</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex flex-column">
+                  <span class="font2" style="color: #767E86; font-size: 13px;font-weight: 400;">Price Per Person</span>
+                  <div class="d-flex flex-row justify-content-center gap-1 align-items-center">
+                    <span class="c-blue2 font2" style="margin-top: 3px; font-size: 36px;font-weight: 700;">€</span>
+                    <span class="c-blue2 font2" style="font-size: 40px;font-weight: 700;line-height: 42px;">{{item?.price | number: '1.0-0'}}</span>
+                  </div>
+                </div>
+                <button [routerLink]="['/adventure/'+ item?.id +'/book']" style="width: fit-content;height: 54px;" mat-raised-button class="font2 bg-blue3 px-3 py-1 rounded rounded-3 btn text-white">
+                  <span class="font2" style="font-size: 15px;font-weight: 700;">Book Now</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </ng-container>
+    </div>
+  </div>
   <div class="d-flex d-lg-none flex-column gap-3 my-5">
     <button [routerLink]="['/explore']" style="width: fit-content;height: 54px;" mat-raised-button class="w-100 bg-blue3 px-3 py-1 rounded rounded-3 btn text-white">
       <span class="font2" style="width: fit-content;font-size: 18px;font-weight: 700;">SEE ALL</span>
     </button>
     <div class="d-flex justify-content-between gap-3">
-      <button (click)="ScrollLeft(wrapper)" style="width: fit-content;height: 54px;background-color: #828282;" mat-raised-button class="w-100 px-3 rounded rounded-3 btn text-white">
+      <button data-bs-target="#carouselExample3" data-bs-slide="prev" style="width: fit-content;height: 54px;background-color: #828282;" mat-raised-button class="w-100 px-3 rounded rounded-3 btn text-white">
         <mat-icon class="text-white m-0" style="font-size: 37px;width: 37px;height:37px">navigate_before</mat-icon>
       </button>
-      <button (click)="ScrollRight(wrapper)" style="width: fit-content;height: 54px;background-color: #FBC972;" mat-raised-button class="w-100 px-3 rounded rounded-3 btn text-white">
+      <button data-bs-target="#carouselExample3" data-bs-slide="next" style="width: fit-content;height: 54px;background-color: #FBC972;" mat-raised-button class="w-100 px-3 rounded rounded-3 btn text-white">
         <mat-icon class="text-white m-0" style="font-size: 37px;width: 37px;height:37px">navigate_next</mat-icon>
       </button>
     </div>
   </div>
+</div>
 </section>
 
 <section class="container-lg d-flex flex-column align-items-center my-5">
-  <h1 class="header-sec font1 text-center" style="font-size: 54px;line-height: 63px;">Our Special Services</h1>
-  <p class="mt-3" style="color:#767E86;font-size: 24px;line-height: 32.68px;">Check out our services that designed specially for your comfort</p>
+  <h1 class="header-sec font1 text-center header1" style="font-size: 45px;line-height: 40px;">Our Special Services</h1>
+  <p class="mt-2 font2 text-center" style="color:#767E86;font-size: 22px;line-height: 32px;">Check out our services that designed specially for your comfort</p>
   <div class="row justify-content-center w-100 d-none d-lg-flex" style="margin-top: 30px;">
     <ng-container *ngFor="let item of categories">
       <div class="col-12 col-md-6 col-lg-3 p-3">
@@ -145,11 +190,10 @@
     </ng-container>
   </div>
 
-  <div #wrapper2 class="overflow-hidden w-100 d-block d-lg-none">
-    <div class="row d-flex flex-row flex-nowrap w-100" style="margin-top: 30px;">
-
-      <ng-container *ngFor="let item of categories">
-        <div class="col-12 col-md-6 col-lg-3 p-3">
+  <div id="carouselExample2" class="carousel slide d-flex d-lg-none" style="width: 100%;">
+    <div class="carousel-inner row">
+      <ng-container *ngFor="let item of categories;let i = index;">
+        <div class="col-12 p-3 carousel-item"  [ngClass]="{'active': i==0}">
           <div [routerLink]="['../explore']" [queryParams]="{'filter':item.id,'d':item.title}" class="categ-overlay rounded rounded-5 overflow-hidden position-relative" style="height: 450px;cursor: pointer;">
             <img src="{{item.image}}" alt="" class="h-100 w-100" style="object-fit: cover;">
             <div class="span-text d-flex c-white position-absolute align-items-center bottom-0 start-50 translate-middle-x mb-5 font2">
@@ -160,15 +204,14 @@
           </div>
         </div>
       </ng-container>
-
     </div>
   </div>
   <div class="d-flex d-lg-none flex-column gap-3 w-100 my-5">
     <div class="d-flex justify-content-between gap-3">
-      <button (click)="ScrollLeft(wrapper2,400)" style="width: 100%;height: 54px;background-color: #828282;" mat-raised-button class="w-100 px-3 rounded rounded-3 btn text-white">
+      <button  data-bs-target="#carouselExample2" data-bs-slide="prev" style="width: 100%;height: 54px;background-color: #828282;" mat-raised-button class="w-100 px-3 rounded rounded-3 btn text-white">
         <mat-icon class="text-white m-0" style="font-size: 37px;width: 37px;height:37px">navigate_before</mat-icon>
       </button>
-      <button (click)="ScrollRight(wrapper2,400)" style="width: 100%;height: 54px;background-color: #FBC972;" mat-raised-button class="w-100 px-3 rounded rounded-3 btn text-white">
+      <button  data-bs-target="#carouselExample2" data-bs-slide="next" style="width: 100%;height: 54px;background-color: #FBC972;" mat-raised-button class="w-100 px-3 rounded rounded-3 btn text-white">
         <mat-icon class="text-white m-0" style="font-size: 37px;width: 37px;height:37px">navigate_next</mat-icon>
       </button>
     </div>

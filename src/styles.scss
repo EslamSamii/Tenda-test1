@@ -214,3 +214,93 @@ body{
   height: 80vh;
   overflow: auto;
 }
+.view-img-con{
+  position: relative;
+  &::after{
+    content: "View";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.444);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: white;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    transition: all 0.8s ease;
+    -webkit-transition: all 0.8s ease;
+    -moz-transition: all 0.8s ease;
+    -ms-transition: all 0.8s ease;
+    -o-transition: all 0.8s ease;
+    cursor: pointer;
+  }
+  & img{
+    transition: all 0.8s ease;
+    -webkit-transition: all 0.8s ease;
+    -moz-transition: all 0.8s ease;
+    -ms-transition: all 0.8s ease;
+    -o-transition: all 0.8s ease;
+  }
+  &:hover{
+    & img{
+      transition: all 0.8s ease;
+      -webkit-transition: all 0.8s ease;
+      -moz-transition: all 0.8s ease;
+      -ms-transition: all 0.8s ease;
+      -o-transition: all 0.8s ease;
+      transform: scale(1.1);
+      -webkit-transform: scale(1.1);
+      -moz-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+      -o-transform: scale(1.1);
+}
+    &::after{
+      content: "View";
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.255);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      opacity: 1;
+      transition: all 0.8s ease;
+      -webkit-transition: all 0.8s ease;
+      -moz-transition: all 0.8s ease;
+      -ms-transition: all 0.8s ease;
+      -o-transition: all 0.8s ease;
+}
+  }
+}
+.header1{
+  @media screen and (max-width:768px) {
+    font-size: 35px !important;
+    &::after{
+      bottom: -5px;
+    }
+  }
+}
+.text-temp{
+  @media screen and (min-width:768px) {
+    &::after{
+      left: 0 !important;
+      right: unset !important;
+      transform: unset !important;
+      -webkit-transform: unset !important;
+      -moz-transform: unset !important;
+      -ms-transform: unset !important;
+      -o-transform: unset !important;
+}
+  }
+
+}
