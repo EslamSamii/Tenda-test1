@@ -1,5 +1,5 @@
 
-<div id="carouselExampleIndicators" class="carousel slide carousel-fade position-relative mb-5" data-bs-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade position-relative mb-5" data-bs-ride="carousel"  data-bs-touch="true" da>
 
 
   <div class="carousel-indicators ca-controles  mx-0 mt-0 mb-3 mb-lg-0 me-lg-5" style="width: 50px;height: 100%;z-index: 3;">
@@ -113,7 +113,7 @@
 <!-- end card -->
 
 <div class="d-flex d-lg-none flex-column">
-  <div id="carouselExample3" class="carousel slide" style="width: 100%;margin-top: 70px" >
+  <div id="carouselExample3" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true" style="width: 100%;margin-top: 70px" >
     <div class="carousel-inner row">
       <ng-container *ngFor="let item of adventuresData?.result ?adventuresData.result : [];let i = index;">
         <div *ngIf="item.title != 'transport'" class="col-12 col-md-6 p-2 carousel-item" [ngClass]="{'active': i==0}">
@@ -190,7 +190,7 @@
     </ng-container>
   </div>
 
-  <div id="carouselExample2" class="carousel slide d-flex d-lg-none" style="width: 100%;">
+  <div id="carouselExample2" class="carousel slide d-flex d-lg-none"  data-bs-ride="carousel" data-bs-touch="true"  style="width: 100%;">
     <div class="carousel-inner row">
       <ng-container *ngFor="let item of categories;let i = index;">
         <div class="col-12 p-3 carousel-item"  [ngClass]="{'active': i==0}">
