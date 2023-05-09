@@ -185,3 +185,10 @@ $orange:#FBC972;
     text-align: center !important;
   }
 }
+.carousel-item{
+  transition: all 0.6s ease-in-out !important;
+  -webkit-transition: all 0.6s ease-in-out !important;
+  -moz-transition: all 0.6s ease-in-out !important;
+  -ms-transition: all 0.6s ease-in-out !important;
+  -o-transition: all 0.6s ease-in-out !important;
+}
