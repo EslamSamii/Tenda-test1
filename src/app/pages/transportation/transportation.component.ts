@@ -76,10 +76,10 @@ export class TransportationComponent {
       //form creation
       this.createForm();
     this.getZones()
-    this.fromPlace.valueChanges().subscribe((res:any)=>{
+    this.fromPlace.valueChanges.subscribe((res:any)=>{
       this.calcPrice()
     })
-    this.toPlace.valueChanges().subscribe((res:any)=>{
+    this.toPlace.valueChanges.subscribe((res:any)=>{
       this.calcPrice()
     })
   }

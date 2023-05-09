@@ -39,13 +39,13 @@
     <!-- start card -->
     <div *ngIf="!transportation" class="col-12 col-md-6 col-lg-4 p-2  fadeInUp animated">
       <div class=" rounded rounded-4 d-flex flex-column overflow-hidden h-100" style="background-color: #FFFDF3;">
-        <div class="overflow-hidden position-relative w-100 view-img-con" [routerLink]="['/adventure/'+ item?.id]" style="height: 380px;">
+        <div class="overflow-hidden position-relative w-100 view-img-con" [routerLink]="['/adventure/'+ item?.id]" style="min-height: 380px;max-height: 380px;">
           <img class="hvr-grow w-100 h-100"  src="{{item?.image}}" style="cursor: pointer; object-fit: cover;">
         </div>
-        <div class="p-3 d-flex flex-column justify-content-between" style="min-height: 280px;">
+        <div class="p-3 d-flex flex-column justify-content-between" style="max-height: 337px; height: 100%;">
           <div>
-              <h3 class="m-0 font1" style="font-weight: 600; font-size: 23px;">{{item?.title}}</h3>
-            <div class="d-flex justify-content-between align-items-center my-3">
+              <h3 class="m-0 font1 line-overflow-2" style="font-weight: 600; font-size: 23px;">{{item?.title}}</h3>
+            <div class="d-flex justify-content-between align-items-center my-3 flex-wrap gap-3">
               <div class="d-flex c-blue1 font2 align-items-center gap-1" style="font-size: 18px;font-weight: 700;">
                 <!-- <img class="me-1" style="object-fit: cover;width: 13px" src="assets/images/categ1.svg" alt=""> -->
                 <mat-icon style="width: 22px;height: 22px;font-size: 22px;" class="c-blue1 material-symbols-outlined">{{getCateg(item.category_id)?.icon}}</mat-icon>
@@ -56,7 +56,7 @@
               <!-- <p class="m-0 c-blue3" style="font-size: 20px"> 15 <span class="mx-1" style="color: #767E86;">to</span> 8 6</p> -->
 
             </div>
-            <p class="font2 my-4 line-overflow-4" style="font-size: 16px;line-height: normal;">{{item?.description}}</p>
+            <p class="font2 my-4 line-overflow-3" style="font-size: 16px;line-height: normal;">{{item?.description}}</p>
           </div>
 
           <div class="d-flex justify-content-between  align-items-center">

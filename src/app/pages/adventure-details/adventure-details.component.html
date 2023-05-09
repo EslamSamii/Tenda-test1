@@ -1,9 +1,9 @@
 <section class="container-lg w-100" style="margin-top: 100px;">
-  <div class="d-flex justify-content-between align-items-center">
+  <div class="d-flex justify-content-between align-items-center flex-column flex-lg-row gap-4 gap-lg-0">
 
     <div class="d-flex justify-content-center flex-column">
       <h2 class="d-none d-lg-block" style="font-size: 40px;line-height: 33px;">{{adventureData?.title}}</h2>
-      <h2 class="d-lg-none d-block" style="font-size: 30px;line-height: 33px;">{{adventureData?.title}}</h2>
+      <h2 class="d-lg-none d-block text-center" style="font-size: 30px;line-height: 33px;">{{adventureData?.title}}</h2>
       <div class="d-flex c-blue1 font2 mt-2" style="font-weight: 700 ;font-size: 28px;">
         <mat-icon style="width: 26px;height: 26px;font-size: 26px;" class="c-blue1 mx-2 material-symbols-outlined">{{categ?.icon}}</mat-icon>
         {{categ?.title}}
@@ -47,22 +47,22 @@
     </div>
     <div class="col-12 col-lg-6 row p-0 m-0 " style="max-height: 380px;height: 380px;">
         <div class="col-6 pe-1 ps-0 pb-1 ps-lg-1 pt-0" style="max-height: 192px;height: 192px;">
-          <div class="w-100 h-100  overflow-hidden view-img-con"   attr.data-bs-toggle="{{adventureData?.images[0] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[0] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[0]?.image">
+          <div class="w-100 h-100  overflow-hidden" [ngClass]="{'view-img-con': adventureData?.images[0]}"  attr.data-bs-toggle="{{adventureData?.images[0] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[0] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[0]?.image">
             <img  src="{{adventureData?.images[0] ? adventureData.images[0].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
         </div>
         <div class="col-6 p-1 pt-0 pe-0" style="max-height: 192px;height: 192px;">
-          <div class="w-100 h-100  overflow-hidden view-img-con"  attr.data-bs-toggle="{{adventureData?.images[1] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[1] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[1]?.image">
+          <div class="w-100 h-100  overflow-hidden" [ngClass]="{'view-img-con': adventureData?.images[1]}"  attr.data-bs-toggle="{{adventureData?.images[1] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[1] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[1]?.image">
             <img src="{{adventureData?.images[1] ? adventureData.images[1].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
         </div>
         <div class="col-6 pe-1 ps-0 pt-1 p-lg-1 " style="max-height: 192px;height: 192px;">
-          <div class="w-100 h-100  overflow-hidden view-img-con"    attr.data-bs-toggle="{{adventureData?.images[2] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[2] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[2]?.image">
+          <div class="w-100 h-100  overflow-hidden"  [ngClass]="{'view-img-con': adventureData?.images[2]}"  attr.data-bs-toggle="{{adventureData?.images[2] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[2] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[2]?.image">
             <img src="{{adventureData?.images[2] ? adventureData.images[2].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
         </div>
         <div class=" position-relative col-6 p-1 pe-0" style="max-height: 192px;height: 192px;">
-          <div [ngClass]="{'view-img-con': adventureData?.images[3]}" class="h-100 w-100 overflow-hidden" *ngIf="adventureData?.images.length<=4"  attr.data-bs-toggle="{{adventureData?.images[3] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[3] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[3]?.image">
+          <div [ngClass]="{'view-img-con': adventureData?.images[3]}" class="h-100 w-100 overflow-hidden" [ngClass]="{'view-img-con': adventureData?.images[3]}" *ngIf="adventureData?.images.length<=4"  attr.data-bs-toggle="{{adventureData?.images[3] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[3] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[3]?.image">
             <img  src="{{adventureData?.images[3] ? adventureData.images[3].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
           <div *ngIf="adventureData?.images.length>4"  class="overlay-seemore w-100 h-100 overflow-hidden"   attr.data-bs-toggle="{{adventureData?.images[3] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[3] ? '#seeMorePhotos' : '' }}">

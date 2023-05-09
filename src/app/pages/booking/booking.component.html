@@ -3,12 +3,12 @@
 
     <div class="d-flex d-lg-none col-12 col-lg-4 p-2 my-2">
       <div class=" rounded rounded-4 d-flex flex-column overflow-hidden h-100" style="background-color: #FFFDF3;">
-        <div class="overflow-hidden position-relative w-100" style="height: 380px;">
+        <div class="overflow-hidden position-relative w-100" style="min-height: 380px;max-height: 380px;">
           <img class="hvr-grow w-100 h-100" [routerLink]="['/adventure/'+ adventureData?.id]" src="{{adventureData?.image}}" style="cursor: pointer; object-fit: cover;">
         </div>
-        <div class="p-3">
-          <h3 class="m-0 mt-3 font1" style="font-weight: 600; font-size: 23px;">{{adventureData?.title}}</h3>
-          <div class="d-flex justify-content-between align-items-center my-3">
+        <div class="p-3 d-flex flex-column justify-content-between" style="max-height: 337px; height: 100%;">
+          <h3 class="m-0 mt-3 font1 line-overflow-2" style="font-weight: 600; font-size: 23px;">{{adventureData?.title}}</h3>
+          <div class="d-flex justify-content-between align-items-center my-3  flex-wrap gap-3">
             <div class="d-flex c-blue1 font2 align-items-center gap-1" style="font-size: 18px;font-weight: 700;">
             <mat-icon style="width: 22px;height: 22px;font-size: 22px;" class="c-blue1 material-symbols-outlined">{{getCateg(adventureData?.category_id)?.icon}}</mat-icon>
 
@@ -20,7 +20,7 @@
             <!-- <p class="m-0 c-blue3" style="font-size: 20px"> 15 <span class="mx-1" style="color: #767E86;">to</span> 8 6</p> -->
 
           </div>
-          <p class="font2 my-4 line-overflow-4" style="font-size: 16px;line-height: normal;">{{adventureData?.description}}</p>
+          <p class="font2 my-4 line-overflow-3" style="font-size: 16px;line-height: normal;">{{adventureData?.description}}</p>
 
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex flex-column">
@@ -134,7 +134,7 @@
       </svg>
       <h2 class="font1 my-5" style="font-weight: 700; font-size: 45px;">Congratulations!</h2>
       <p class="font2" style="color: #828282;font-size: 16px;">Your request has been registered successfully</p>
-      <button [routerLink]="['/explore']" type="button" style="height: 54px;" mat-raised-button class="w-100 my-5 bg-blue3 px-5 py-3 rounded rounded-3 btn text-white">
+      <button [routerLink]="['/explore']" type="button" style="height: 54px; max-width: 600px;" mat-raised-button class="w-100 my-5 bg-blue3 px-5 py-3 rounded rounded-3 btn text-white">
         <span class="font2" style="font-size: 18px;font-weight: 700;">Explore more adventures</span>
       </button>
     </div>
@@ -142,12 +142,12 @@
 
     <div class="d-none d-lg-flex col-12 col-lg-4 p-2 my-2">
       <div class=" rounded rounded-4 d-flex flex-column overflow-hidden h-100" style="background-color: #FFFDF3;">
-        <div class="overflow-hidden position-relative w-100" style="height: 380px;">
+        <div class="overflow-hidden position-relative w-100" style="min-height: 380px;max-height: 380px;">
           <img class="hvr-grow w-100 h-100" [routerLink]="['/adventure/'+ adventureData?.id]" src="{{adventureData?.image}}" style="cursor: pointer; object-fit: cover;">
         </div>
-        <div class="p-3">
-          <h3 class="m-0 mt-3 font1" style="font-weight: 600; font-size: 23px;">{{adventureData?.title}}</h3>
-          <div class="d-flex justify-content-between align-items-center my-3">
+        <div class="p-3 d-flex flex-column justify-content-between" style="max-height: 337px; height: 100%;">
+          <h3 class="m-0 mt-3 font1 line-overflow-2" style="font-weight: 600; font-size: 23px;">{{adventureData?.title}}</h3>
+          <div class="d-flex justify-content-between align-items-center my-3  flex-wrap gap-3">
             <div class="d-flex c-blue1 font2 align-items-center gap-1" style="font-size: 18px;font-weight: 700;">
               <!-- <img class="me-1" style="object-fit: cover;width: 13px" src="assets/images/categ1.svg" alt=""> -->
               <mat-icon style="width: 22px;height: 22px;font-size: 22px;" class="c-blue1 material-symbols-outlined">{{getCateg(adventureData?.category_id)?.icon}}</mat-icon>
@@ -158,7 +158,7 @@
             <!-- <p class="m-0 c-blue3" style="font-size: 20px"> 15 <span class="mx-1" style="color: #767E86;">to</span> 8 6</p> -->
 
           </div>
-          <p class="font2 my-4 line-overflow-4" style="font-size: 16px;line-height: normal;">{{adventureData?.description}}</p>
+          <p class="font2 my-4 line-overflow-3" style="font-size: 16px;line-height: normal;">{{adventureData?.description}}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex flex-column">
               <span class="font2" style="color: #767E86; font-size: 13px;font-weight: 400;">Price Per Person</span>
