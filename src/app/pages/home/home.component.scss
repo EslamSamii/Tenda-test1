@@ -172,3 +172,16 @@ $orange:#FBC972;
   -o-transition: unset;
 }
 }
+.main-title{
+  @media screen and (max-width:768px) {
+    font-size: 50px !important;
+    line-height: 60px !important;
+    text-align: center !important;
+  }
+}
+.sub-title-header{
+  @media screen and (max-width:768px) {
+
+    text-align: center !important;
+  }
+}

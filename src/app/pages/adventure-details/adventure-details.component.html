@@ -39,31 +39,31 @@
 
 
 
-  <div class="row rounded-4 overflow-hidden mt-5 gap-3 gap-lg-0">
-    <div class="col-12 col-lg-6 ps-0 pe-1" style="max-height: 380px;height: 380px;">
-      <div class="w-100 h-100  overflow-hidden"   attr.data-bs-toggle="{{adventureData?.image ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.image ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.image">
-        <img class="hvr-grow" src="{{adventureData?.image ? adventureData?.image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+  <div class="row rounded-4 overflow-hidden mt-5 gap-2 gap-lg-0">
+    <div class="col-12 col-lg-6 ps-lg-0 px-0 pe-lg-1" style="max-height: 380px;height: 380px;">
+      <div class="w-100 h-100  overflow-hidden view-img-con"   attr.data-bs-toggle="{{adventureData?.image ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.image ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.image">
+        <img  src="{{adventureData?.image ? adventureData?.image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
       </div>
     </div>
     <div class="col-12 col-lg-6 row p-0 m-0 " style="max-height: 380px;height: 380px;">
-        <div class="col-6 p-1 pt-0" style="max-height: 192px;height: 192px;">
-          <div class="w-100 h-100  overflow-hidden"   attr.data-bs-toggle="{{adventureData?.images[0] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[0] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[0]?.image">
-            <img class="hvr-grow" src="{{adventureData?.images[0] ? adventureData.images[0].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+        <div class="col-6 pe-1 ps-0 pb-1 ps-lg-1 pt-0" style="max-height: 192px;height: 192px;">
+          <div class="w-100 h-100  overflow-hidden view-img-con"   attr.data-bs-toggle="{{adventureData?.images[0] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[0] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[0]?.image">
+            <img  src="{{adventureData?.images[0] ? adventureData.images[0].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
         </div>
         <div class="col-6 p-1 pt-0 pe-0" style="max-height: 192px;height: 192px;">
-          <div class="w-100 h-100  overflow-hidden"  attr.data-bs-toggle="{{adventureData?.images[1] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[1] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[1]?.image">
-            <img class="hvr-grow" src="{{adventureData?.images[1] ? adventureData.images[1].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+          <div class="w-100 h-100  overflow-hidden view-img-con"  attr.data-bs-toggle="{{adventureData?.images[1] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[1] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[1]?.image">
+            <img src="{{adventureData?.images[1] ? adventureData.images[1].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
         </div>
-        <div class="col-6 p-1" style="max-height: 192px;height: 192px;">
-          <div class="w-100 h-100  overflow-hidden"    attr.data-bs-toggle="{{adventureData?.images[2] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[2] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[2]?.image">
-            <img class="hvr-grow" src="{{adventureData?.images[2] ? adventureData.images[2].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+        <div class="col-6 pe-1 ps-0 pt-1 p-lg-1 " style="max-height: 192px;height: 192px;">
+          <div class="w-100 h-100  overflow-hidden view-img-con"    attr.data-bs-toggle="{{adventureData?.images[2] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[2] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[2]?.image">
+            <img src="{{adventureData?.images[2] ? adventureData.images[2].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
         </div>
         <div class=" position-relative col-6 p-1 pe-0" style="max-height: 192px;height: 192px;">
-          <div class="h-100 w-100 overflow-hidden" *ngIf="adventureData?.images.length<=4"  attr.data-bs-toggle="{{adventureData?.images[3] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[3] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[3]?.image">
-            <img class="hvr-grow" src="{{adventureData?.images[3] ? adventureData.images[3].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
+          <div [ngClass]="{'view-img-con': adventureData?.images[3]}" class="h-100 w-100 overflow-hidden" *ngIf="adventureData?.images.length<=4"  attr.data-bs-toggle="{{adventureData?.images[3] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[3] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[3]?.image">
+            <img  src="{{adventureData?.images[3] ? adventureData.images[3].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
           </div>
           <div *ngIf="adventureData?.images.length>4"  class="overlay-seemore w-100 h-100 overflow-hidden"   attr.data-bs-toggle="{{adventureData?.images[3] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[3] ? '#seeMorePhotos' : '' }}">
             <img src="{{adventureData?.images[3] ? adventureData.images[3].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
@@ -126,8 +126,8 @@
   <div class="row my-5 gap-4">
 
     <div *ngFor="let item of adventureData?.steps ? adventureData.steps : []" class="col-12 d-none d-lg-flex gap-5">
-      <div style="min-width: 205px; width: 205px;min-height: 205px;height: 205px;" class="overflow-hidden rounded-5">
-        <img src="{{item?.image}}" class="rounded-5 hvr-grow" data-bs-toggle="modal" data-bs-target="#seePhoto" (click)="selectedIMG=item?.image" style="min-width: 205px; width: 205px;min-height: 205px;height: 205px;object-fit: cover;">
+      <div style="min-width: 205px; width: 205px;min-height: 205px;height: 205px;" (click)="selectedIMG=item?.image"  data-bs-toggle="modal" data-bs-target="#seePhoto" class=" view-img-con overflow-hidden rounded-5">
+        <img src="{{item?.image}}" class="rounded-5"  style="min-width: 205px; width: 205px;min-height: 205px;height: 205px;object-fit: cover;">
 
       </div>
       <div>
@@ -138,9 +138,9 @@
 
     <div *ngFor="let item of adventureData?.steps ? adventureData.steps : []" class="col-12 d-flex flex-column d-lg-none gap-2">
       <h2 class="font2 dot-before" style="font-weight: 700;font-size: 28px;">{{item?.title}}</h2>
-      <div style="width: 100%;height: 100%" class="overflow-hidden rounded-5">
+      <div style="width: 100%;height: 100%" (click)="selectedIMG=item?.image" class="view-img-con overflow-hidden rounded-5" data-bs-toggle="modal" data-bs-target="#seePhoto">
 
-        <img src="{{item?.image}}" class="rounded-5 hvr-grow" data-bs-toggle="modal" data-bs-target="#seePhoto" (click)="selectedIMG=item?.image" style="width: 100%;height: 100%;object-fit: cover;">
+        <img src="{{item?.image}}" class="rounded-5"   style="width: 100%;height: 100%;object-fit: cover;">
       </div>
       <div>
         <p class="font2" style="line-height: 28px;font-size: 20px;">{{item?.description}}</p>
@@ -156,7 +156,7 @@
   <div class="modal-dialog modal-dialog-centered  modal-fullscreen">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Photos</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -176,7 +176,7 @@
   <div class="modal-dialog modal-dialog-centered modal-fullscreen">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Photos</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

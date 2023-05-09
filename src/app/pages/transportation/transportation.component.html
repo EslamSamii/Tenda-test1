@@ -37,8 +37,8 @@
     </div>
 
 
-    <div class="row rounded-4 overflow-hidden mt-5 gap-3 gap-lg-0">
-      <div class="col-12 col-lg-6 ps-0 pe-1" style="max-height: 380px;height: 380px;">
+    <div class="row rounded-4 overflow-hidden mt-5 gap-2 gap-lg-0">
+      <div class="col-12 col-lg-6 pe-1 ps-0 pb-1 ps-lg-1 pt-0" style="max-height: 380px;height: 380px;">
         <div class="w-100 h-100  overflow-hidden"  attr.data-bs-toggle="{{adventureData?.image ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.image ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.image">
           <img class="hvr-grow" src="{{adventureData?.image ? adventureData?.image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
         </div>
@@ -54,7 +54,7 @@
               <img class="hvr-grow" src="{{adventureData?.images[1] ? adventureData.images[1].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
             </div>
           </div>
-          <div class="col-6 p-1" style="max-height: 192px;height: 192px;">
+          <div class="col-6 pe-1 ps-0 pt-1 p-lg-1" style="max-height: 192px;height: 192px;">
             <div class="w-100 h-100  overflow-hidden"   attr.data-bs-toggle="{{adventureData?.images[2] ? 'modal' : '' }}" attr.data-bs-target="{{adventureData?.images[2] ? '#seePhoto' : '' }}" (click)="selectedIMG=adventureData?.images[2]?.image">
               <img class="hvr-grow" src="{{adventureData?.images[2] ? adventureData.images[2].image : emptyImg}}" style="width: 100%;height: 100%;object-fit: cover;">
             </div>
@@ -278,7 +278,7 @@
   <div class="modal-dialog modal-dialog-centered modal-fullscreen">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Photos</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -297,7 +297,7 @@
   <div class="modal-dialog modal-dialog-centered modal-fullscreen">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Photos</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
