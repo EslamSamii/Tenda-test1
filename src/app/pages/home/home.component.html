@@ -113,11 +113,12 @@
 <!-- end card -->
 
 <div class="d-flex d-lg-none flex-column">
-  <div id="carouselExample3" class="carousel slide carousel-fade"  data-bs-touch="true" style="width: 100%;margin-top: 70px" >
+  <div id="carouselExample3" class="carousel slide"  data-bs-touch="true" style="width: 100%;margin-top: 70px" >
     <div class="carousel-inner">
       <ng-container *ngFor="let item of adventuresData?.result ?adventuresData.result : [];let i = index;">
         <div class="carousel-item"  [ngClass]="{'active': i==0}">
-            <div *ngIf="item.title != 'transport'" class="w-100 p-2">
+          <div class="row">
+            <div *ngIf="item.title != 'transport'" class="col-12 col-lg-6 p-2">
               <div class=" rounded rounded-4 d-flex flex-column overflow-hidden h-100" style="background-color: #FFFDF3;">
                 <div class="overflow-hidden position-relative w-100 view-img-con" [routerLink]="['/adventure/'+ item?.id]" style="min-height: 380px;max-height: 380px;">
                   <img class=" w-100 h-100 view-img"  src="{{item?.image}}" style=" cursor: pointer; object-fit: cover;">
@@ -153,7 +154,9 @@
                   </div>
                 </div>
               </div>
+            </div>
           </div>
+
         </div>
 
     </ng-container>
@@ -193,11 +196,12 @@
     </ng-container>
   </div>
 
-  <div id="carouselExample2" class="carousel slide carousel-fade d-flex d-lg-none"   data-bs-touch="true"  style="width: 100%;">
+  <div id="carouselExample2" class="carousel slide d-flex d-lg-none"   data-bs-touch="true"  style="width: 100%;">
     <div class="carousel-inner row">
       <ng-container *ngFor="let item of categories;let i = index;">
-    <div class="carousel-item position-relative"  [ngClass]="{'active': i==0}">
-        <div class="p-3 w-100">
+    <div class="carousel-item"  [ngClass]="{'active': i==0}">
+      <div class="row">
+        <div class="col-12 p-3">
           <div [routerLink]="['../explore']" [queryParams]="{'filter':item.id,'d':item.title}" class="categ-overlay rounded rounded-5 overflow-hidden position-relative" style="height: 450px;cursor: pointer;">
             <img src="{{item.image}}" alt="" class="h-100 w-100" style="object-fit: cover;">
             <div class="span-text d-flex c-white position-absolute align-items-center bottom-0 start-50 translate-middle-x mb-5 font2">
@@ -208,6 +212,8 @@
           </div>
         </div>
       </div>
+
+    </div>
 
       </ng-container>
     </div>
