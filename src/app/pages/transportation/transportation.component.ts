@@ -194,7 +194,7 @@ export class TransportationComponent {
         destination:this.zones.filter((z:any) => z.title === this.toPlace.value)[0].id,
         flight_arrival_date:this.dateFrom.value,
         round_trip:this.isReturn,
-        no_of_persons:this.persons.value,
+        no_of_persons: parseInt(this.persons.value),
         flight_departure_date:this.dateTo ? this.dateTo : this.dateFrom.value
 
       }
